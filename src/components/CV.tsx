@@ -1,9 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Calendar, X } from 'lucide-react';
+import { Calendar, Mail, MapPin, X } from 'lucide-react';
 import Image from 'next/image';
-import { GridPattern, CornerAccent, SectionLabel, SharpAccent, SectionHeading } from './styling';
+import { useEffect } from 'react';
+import { CornerAccent, GridPattern, SectionHeading, SectionLabel, SharpAccent } from './styling';
 
 interface CVProps {
   isOpen: boolean;
@@ -11,6 +12,15 @@ interface CVProps {
 }
 
 export const CV = ({ isOpen, onClose }: CVProps) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const workExperience = [
@@ -45,12 +55,12 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
 
   const skills = [
     { name: 'JavaScript', level: 95 },
-    { name: 'React', level: 95 },
+    { name: 'React & Next.js', level: 95 },
     { name: 'TypeScript', level: 90 },
     { name: 'CSS', level: 90 },
     { name: 'GraphQL', level: 85 },
-    { name: 'Node.js', level: 85 },
-    { name: 'React.js', level: 95 },
+    { name: 'Node.js & Nest.js', level: 85 },
+    { name: 'Vue.js', level: 75 },
   ];
 
   const companies = [

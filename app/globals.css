@@ -9,6 +9,20 @@
     border-color: var(--color-border);
   }
 
+  a,
+  button,
+  [role='button'],
+  [type='button'],
+  [type='submit'],
+  [type='reset'],
+  label[for],
+  select,
+  summary,
+  [onclick],
+  [tabindex]:not([tabindex='-1']) {
+    cursor: pointer;
+  }
+
   body {
     @apply bg-black text-zinc-50 antialiased;
     font-family:

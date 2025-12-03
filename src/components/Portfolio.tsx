@@ -24,7 +24,7 @@ const skills: Skill[] = [
     id: 2,
     name: 'TYPESCRIPT & JAVASCRIPT',
     category: 'PROGRAMMING LANGUAGES',
-    experience: '6+ years',
+    experience: '7+ years',
     icon: Code2,
   },
   {
@@ -38,7 +38,7 @@ const skills: Skill[] = [
     id: 4,
     name: 'NODE.JS & DATABASES',
     category: 'BACKEND DEVELOPMENT',
-    experience: '5+ years',
+    experience: '3+ years',
     icon: Database,
   },
   {
@@ -52,7 +52,7 @@ const skills: Skill[] = [
     id: 6,
     name: 'GIT & CI/CD',
     category: 'DEVOPS & VERSION CONTROL',
-    experience: '6+ years',
+    experience: '7+ years',
     icon: Code2,
   },
 ];
@@ -62,10 +62,7 @@ export const Portfolio = () => (
     id="work"
     className="relative overflow-hidden border-t border-purple-500/30 px-4 py-16 md:px-6 md:py-32"
   >
-    {/* Grid pattern */}
     <GridPattern />
-
-    {/* Sharp accent - hidden on mobile */}
     <SharpAccent
       position="top-right"
       className="hidden h-[400px] w-[400px] bg-purple-600/10 md:block"
@@ -97,17 +94,14 @@ export const Portfolio = () => (
             className="group relative"
           >
             <div className="relative flex min-h-[180px] flex-col border-2 border-purple-500/30 bg-black p-6 transition-all duration-300 hover:border-purple-500 md:min-h-[200px] md:p-8">
-              {/* Corner accents */}
               <CornerAccent position="top-left" size="md" />
               <CornerAccent position="bottom-right" size="md" color="fuchsia" />
-
               <div className="mb-4 md:mb-6">
                 <skill.icon
                   className="text-purple-500 transition-colors duration-300 group-hover:text-white"
                   size={28}
                 />
               </div>
-
               <div className="mb-3 flex items-center gap-3 md:mb-4">
                 <div className="h-[1px] w-6 bg-purple-500 md:w-8" />
                 <span className="text-[10px] tracking-[0.2em] text-purple-400 uppercase md:text-xs">
