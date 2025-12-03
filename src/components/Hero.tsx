@@ -5,11 +5,8 @@ import { GridPattern, CornerAccent, SharpAccent } from './styling';
 
 export const Hero = () => (
   <section className="min-h-screen flex items-center justify-center px-4 md:px-6 relative overflow-hidden">
-    {/* Sharp gradient accents */}
     <SharpAccent position="top-right" size="lg" />
     <SharpAccent position="bottom-left" color="fuchsia" />
-
-    {/* Technical grid */}
     <GridPattern opacity="medium" />
     <div className="max-w-6xl mx-auto text-center relative z-10">
       <motion.div
