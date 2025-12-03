@@ -1,4 +1,6 @@
-import { motion } from 'motion/react';
+"use client";
+
+import { motion } from 'framer-motion';
 import { Mail, Linkedin, Github, Twitter } from 'lucide-react';
 
 export function Contact() {
@@ -43,7 +45,7 @@ export function Contact() {
           </h2>
           
           <p className="text-sm md:text-lg text-zinc-500 mb-12 md:mb-16 max-w-2xl mx-auto uppercase tracking-wider px-4">
-            Ready to discuss your project? Let's connect and build something extraordinary together.
+            Ready to discuss your project? Let&apos;s connect and build something extraordinary together.
           </p>
 
           <motion.div

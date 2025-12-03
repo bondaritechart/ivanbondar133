@@ -1,4 +1,6 @@
-import { motion } from 'motion/react';
+"use client";
+
+import { motion } from 'framer-motion';
 import { Code2, Palette, Database, Zap } from 'lucide-react';
 
 interface Skill {
@@ -6,7 +8,7 @@ interface Skill {
   name: string;
   category: string;
   experience: string;
-  icon: any;
+  icon: React.ComponentType<{ className?: string; size?: number }>;
 }
 
 const skills: Skill[] = [

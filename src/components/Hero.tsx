@@ -1,4 +1,6 @@
-import { motion } from 'motion/react';
+"use client";
+
+import { motion } from 'framer-motion';
 
 export function Hero() {
   return (

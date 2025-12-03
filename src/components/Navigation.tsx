@@ -1,7 +1,9 @@
+"use client";
+
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import logo from 'figma:asset/08a4c2941dcc091823d73b529c66d66174d578f3.png';
+import Image from 'next/image';
 
 interface NavigationProps {
   onOpenCV: () => void;
@@ -51,9 +53,11 @@ export function Navigation({ onOpenCV }: NavigationProps) {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <img 
-              src={logo} 
+            <Image 
+              src="/images/08a4c2941dcc091823d73b529c66d66174d578f3.png" 
               alt="Logo" 
+              width={40}
+              height={40}
               className="h-8 md:h-10 w-auto"
             />
           </motion.a>

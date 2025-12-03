@@ -1,11 +1,8 @@
-import { motion } from 'motion/react';
+"use client";
+
+import { motion } from 'framer-motion';
 import { Mail, MapPin, Calendar, X } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import coverwalletLogo from 'figma:asset/2451566175a740f38ecee00e8b5679d1687ac669.png';
-import itechartLogo from 'figma:asset/85e599c989c466bac62d32cb8e1d5831ff4a2cc0.png';
-import keepsLogo from 'figma:asset/a3389506a9c698eb3b4873165166cc863799daa8.png';
-import popsaLogo from 'figma:asset/d33116a7f1973f42129f2fd150e1189098b7586f.png';
-import elemyLogo from 'figma:asset/8c88f966c88723e1fb4098ca5f9a50a2019e82ff.png';
 
 interface CVProps {
   isOpen: boolean;
@@ -53,11 +50,11 @@ export function CV({ isOpen, onClose }: CVProps) {
   ];
 
   const companies = [
-    { name: 'iTechArt', url: 'https://itechartgroup.by/', logo: itechartLogo },
-    { name: 'elemy', url: 'https://care.elemy.com/peds_b/', logo: elemyLogo },
-    { name: 'coverwallet', url: 'https://www.coverwallet.com/', logo: coverwalletLogo },
-    { name: 'Keeps', url: 'https://www.keeps.com/', logo: keepsLogo },
-    { name: 'Popsa', url: 'https://popsa.com/en-us/', logo: popsaLogo }
+    { name: 'iTechArt', url: 'https://itechartgroup.by/', logo: '/images/85e599c989c466bac62d32cb8e1d5831ff4a2cc0.png' },
+    { name: 'elemy', url: 'https://care.elemy.com/peds_b/', logo: '/images/8c88f966c88723e1fb4098ca5f9a50a2019e82ff.png' },
+    { name: 'coverwallet', url: 'https://www.coverwallet.com/', logo: '/images/2451566175a740f38ecee00e8b5679d1687ac669.png' },
+    { name: 'Keeps', url: 'https://www.keeps.com/', logo: '/images/a3389506a9c698eb3b4873165166cc863799daa8.png' },
+    { name: 'Popsa', url: 'https://popsa.com/en-us/', logo: '/images/d33116a7f1973f42129f2fd150e1189098b7586f.png' }
   ];
 
   return (
