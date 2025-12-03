@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Code2, Palette, Database, Zap } from 'lucide-react';
+import { GridPattern } from './GridPattern';
 
 interface Skill {
   id: number;
@@ -62,10 +63,7 @@ export function Portfolio() {
 
       
       {/* Grid pattern */}
-      <div className="absolute inset-0 opacity-10" style={{
-        backgroundImage: 'linear-gradient(rgba(168,85,247,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.5) 1px, transparent 1px)',
-        backgroundSize: '50px 50px'
-      }} />
+      <GridPattern />
 
       {/* Sharp accent - hidden on mobile */}
       <div className="hidden md:block absolute top-0 right-0 w-[400px] h-[400px] bg-purple-600/10" style={{

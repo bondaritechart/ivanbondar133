@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { GridPattern } from './GridPattern';
 
 const companies = [
   { 
@@ -41,10 +42,7 @@ export function Companies() {
     <section id="career" className="py-16 md:py-24 px-4 md:px-6 relative overflow-hidden border-t border-purple-500/30">
 
       {/* Grid pattern */}
-      <div className="absolute inset-0 opacity-10" style={{
-        backgroundImage: 'linear-gradient(rgba(168,85,247,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.5) 1px, transparent 1px)',
-        backgroundSize: '50px 50px'
-      }} />
+      <GridPattern />
       
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div

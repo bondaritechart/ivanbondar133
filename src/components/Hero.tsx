@@ -1,6 +1,7 @@
 "use client";
 
 import {motion} from 'framer-motion';
+import {GridPattern} from './GridPattern';
 
 export function Hero() {
   return (
@@ -14,10 +15,7 @@ export function Hero() {
       }}/>
 
       {/* Technical grid */}
-      <div className="absolute inset-0 opacity-20" style={{
-        backgroundImage: 'linear-gradient(rgba(168,85,247,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.3) 1px, transparent 1px)',
-        backgroundSize: '50px 50px'
-      }}/>
+      <GridPattern opacity="medium" />
       <div className="max-w-6xl mx-auto text-center relative z-10">
         <motion.div
           initial={{opacity: 0, y: 30}}

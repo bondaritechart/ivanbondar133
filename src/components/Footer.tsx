@@ -1,5 +1,7 @@
 "use client";
 
+import { GridPattern } from './GridPattern';
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -8,10 +10,7 @@ export function Footer() {
       <div className="absolute inset-0 bg-black" />
       
       {/* Grid pattern */}
-      <div className="absolute inset-0 opacity-10" style={{
-        backgroundImage: 'linear-gradient(rgba(168,85,247,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.5) 1px, transparent 1px)',
-        backgroundSize: '50px 50px'
-      }} />
+      <GridPattern />
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">

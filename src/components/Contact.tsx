@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Linkedin, Github, Twitter, Send } from 'lucide-react';
 import { useState } from 'react';
+import { GridPattern } from './GridPattern';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -52,10 +53,7 @@ export function Contact() {
   return (
       <section id="contact" className="py-16 md:py-32 px-4 md:px-6 relative overflow-hidden border-t border-purple-500/30">
         {/* Grid pattern */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: 'linear-gradient(rgba(168,85,247,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.5) 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }} />
+        <GridPattern />
 
         {/* Sharp accent - smaller on mobile */}
         <div className="absolute bottom-0 left-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-purple-600/10" style={{

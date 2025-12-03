@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Calendar, X } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { GridPattern } from './GridPattern';
 
 interface CVProps {
   isOpen: boolean;
@@ -81,10 +82,7 @@ export function CV({ isOpen, onClose }: CVProps) {
       {/* Content */}
       <div className="relative z-[105] min-h-screen py-16 md:py-24 px-4 md:px-6">
         {/* Grid pattern */}
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: 'linear-gradient(rgba(168,85,247,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.5) 1px, transparent 1px)',
-          backgroundSize: '50px 50px'
-        }} />
+        <GridPattern />
 
         {/* Sharp accents - smaller on mobile */}
         <div className="absolute top-0 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-purple-600/10" style={{
