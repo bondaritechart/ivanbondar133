@@ -3,7 +3,7 @@ interface GridPatternProps {
   className?: string;
 }
 
-export function GridPattern({ opacity = 'light', className = '' }: GridPatternProps) {
+export const GridPattern = ({ opacity = 'light', className = '' }: GridPatternProps) => {
   const opacityClass = opacity === 'medium' ? 'opacity-20' : 'opacity-10';
   const gradientOpacity = opacity === 'medium' ? '0.3' : '0.5';
 
@@ -16,5 +16,5 @@ export function GridPattern({ opacity = 'light', className = '' }: GridPatternPr
       }}
     />
   );
-}
+};
 

@@ -9,7 +9,7 @@ interface NavigationProps {
   onOpenCV: () => void;
 }
 
-export function Navigation({ onOpenCV }: NavigationProps) {
+export const Navigation = ({ onOpenCV }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -145,4 +145,4 @@ export function Navigation({ onOpenCV }: NavigationProps) {
       </AnimatePresence>
     </motion.nav>
   );
-}
+};

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { GridPattern } from './GridPattern';
+import { GridPattern } from './styling';
+import { CompanyCard } from './CompanyCard';
 
 const companies = [
   { 
@@ -37,71 +37,27 @@ const companies = [
   }
 ];
 
-export function Companies() {
-  return (
-    <section id="career" className="py-16 md:py-24 px-4 md:px-6 relative overflow-hidden border-t border-purple-500/30">
-
-      {/* Grid pattern */}
-      <GridPattern />
-      
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-12 md:mb-16 flex items-center gap-4"
-        >
-          <div className="h-[2px] w-8 md:w-12 bg-purple-500" />
-          <p className="text-xs md:text-sm text-purple-400 uppercase tracking-[0.2em] md:tracking-[0.3em]">
-            Career Path
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
-          {companies.map((company, index) => (
-            <motion.div
-              key={company.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative"
-            >
-              <a
-                href={company.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative p-6 border-2 border-purple-500/30 bg-black hover:border-purple-500 transition-all duration-300 min-h-[220px] md:min-h-[280px] flex flex-col"
-              >
-                {/* Corner accents */}
-                <div className="absolute -top-1 -left-1 w-2 md:w-3 h-2 md:h-3 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute -bottom-1 -right-1 w-2 md:w-3 h-2 md:h-3 bg-fuchsia-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                
-                <div className="flex-1 flex items-center justify-center mb-4 md:mb-6">
-                  {company.logo ? (
-                    <ImageWithFallback
-                      src={company.logo}
-                      alt={company.name}
-                      className="w-full h-auto max-h-10 md:max-h-12 object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300 grayscale group-hover:grayscale-0"
-                    />
-                  ) : (
-                    <span className="text-lg md:text-2xl text-zinc-500 group-hover:text-white transition-colors duration-300 uppercase tracking-wider">
-                      {company.name}
-                    </span>
-                  )}
-                </div>
-                
-                <div className="border-t border-purple-500/20 pt-3 md:pt-4">
-                  <p className="text-xs text-zinc-600 group-hover:text-zinc-400 transition-colors duration-300 leading-relaxed">
-                    {company.description}
-                  </p>
-                </div>
-              </a>
-            </motion.div>
-          ))}
-        </div>
+export const Companies = () => (
+  <section id="career" className="py-16 md:py-24 px-4 md:px-6 relative overflow-hidden border-t border-purple-500/30">
+    <GridPattern />
+    <div className="max-w-7xl mx-auto relative z-10">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="mb-12 md:mb-16 flex items-center gap-4"
+      >
+        <div className="h-[2px] w-8 md:w-12 bg-purple-500" />
+        <p className="text-xs md:text-sm text-purple-400 uppercase tracking-[0.2em] md:tracking-[0.3em]">
+          Career Path
+        </p>
+      </motion.div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
+        {companies.map((company, index) => (
+          <CompanyCard key={company.name} {...company} index={index} />
+        ))}
       </div>
-    </section>
-  );
-}
+    </div>
+  </section>
+);

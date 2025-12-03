@@ -1,8 +1,8 @@
 "use client";
 
-import { GridPattern } from './GridPattern';
+import { GridPattern } from './styling';
 
-export function Footer() {
+export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -48,4 +48,4 @@ export function Footer() {
       </div>
     </footer>
   );
-}
+};

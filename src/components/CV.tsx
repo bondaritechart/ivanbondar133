@@ -2,15 +2,15 @@
 
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Calendar, X } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { GridPattern } from './GridPattern';
+import Image from 'next/image';
+import { GridPattern, CornerAccent } from './styling';
 
 interface CVProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export function CV({ isOpen, onClose }: CVProps) {
+export const CV = ({ isOpen, onClose }: CVProps) => {
   if (!isOpen) return null;
 
   const workExperience = [
@@ -114,8 +114,8 @@ export function CV({ isOpen, onClose }: CVProps) {
               </div>
 
               <div className="border-2 border-purple-500/30 p-4 md:p-6 bg-black relative self-start">
-                <div className="absolute -top-1 -right-1 w-3 md:w-4 h-3 md:h-4 bg-purple-500" />
-                <div className="absolute -bottom-1 -left-1 w-3 md:w-4 h-3 md:h-4 bg-fuchsia-500" />
+                <CornerAccent position="top-right" size="md" showOn="always" />
+                <CornerAccent position="bottom-left" size="md" color="fuchsia" showOn="always" />
                 
                 <h3 className="text-xs md:text-sm text-purple-400 uppercase tracking-[0.2em] mb-3 md:mb-4 flex items-center gap-2">
                   <div className="h-[1px] w-4 md:w-6 bg-purple-500" />
@@ -202,13 +202,16 @@ export function CV({ isOpen, onClose }: CVProps) {
                   viewport={{ once: true }}
                   className="group relative border-2 border-purple-500/30 bg-black hover:border-purple-500 transition-all duration-300 p-4 md:p-6 flex items-center justify-center min-h-[100px] md:min-h-[120px]"
                 >
-                  <div className="absolute -top-1 -left-1 w-2 h-2 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-fuchsia-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <ImageWithFallback
-                    src={company.logo}
-                    alt={company.name}
-                    className="w-full h-auto max-h-8 md:max-h-12 object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
-                  />
+                  <CornerAccent position="top-left" size="xs" />
+                  <CornerAccent position="bottom-right" size="xs" color="fuchsia" />
+                  <div className="relative w-full h-8 md:h-12">
+                    <Image
+                      src={company.logo}
+                      alt={company.name}
+                      fill
+                      className="object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+                    />
+                  </div>
                 </motion.a>
               ))}
             </div>
@@ -228,8 +231,8 @@ export function CV({ isOpen, onClose }: CVProps) {
             </h2>
 
             <div className="border-2 border-purple-500/30 p-6 md:p-8 bg-black relative group hover:border-purple-500 transition-colors duration-300">
-              <div className="absolute -top-1 -right-1 w-3 md:w-4 h-3 md:h-4 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute -bottom-1 -left-1 w-3 md:w-4 h-3 md:h-4 bg-fuchsia-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <CornerAccent position="top-right" size="md" />
+              <CornerAccent position="bottom-left" size="md" color="fuchsia" />
               
               <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
                 <Calendar size={16} className="text-purple-500" />
@@ -284,4 +287,4 @@ export function CV({ isOpen, onClose }: CVProps) {
       </div>
     </motion.div>
   );
-}
+};
