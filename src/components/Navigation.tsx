@@ -39,10 +39,10 @@ export function Navigation({ onOpenCV }: NavigationProps) {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
         isScrolled 
-          ? 'bg-black/90 backdrop-blur-xl border-b border-purple-500/30' 
-          : 'bg-transparent'
+          ? 'bg-black/90 backdrop-blur-xl border-purple-500/30' 
+          : 'bg-transparent border-purple-500/0'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-6">

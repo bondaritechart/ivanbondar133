@@ -78,16 +78,14 @@ export function Hero() {
           >
             <a
               href="#contact"
-              className="group relative w-full sm:w-auto px-8 md:px-10 py-3 md:py-4 bg-purple-600 border-2 border-purple-500 overflow-hidden text-center"
+              className="group relative w-full sm:w-auto px-8 md:px-10 py-3 md:py-4 bg-purple-600 border-2 hover:bg-purple-500 border-purple-500 overflow-hidden text-center transition-all duration-300"
             >
-              <div className="absolute inset-0 bg-purple-500 translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
-              <div className="absolute -top-1 -right-1 w-3 md:w-4 h-3 md:h-4 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               <span className="relative text-white uppercase tracking-widest text-sm md:text-base">Get Started</span>
             </a>
             
             <a
               href="#work"
-              className="group relative w-full sm:w-auto px-8 md:px-10 py-3 md:py-4 border-2 border-purple-500 text-purple-400 hover:text-white hover:bg-purple-500/10 transition-all duration-300 uppercase tracking-widest text-center text-sm md:text-base"
+              className="group bg-black relative w-full sm:w-auto px-8 md:px-10 py-3 md:py-4 border-2 border-purple-500 text-purple-400 hover:text-white hover:bg-purple-500 transition-all duration-300 uppercase tracking-widest text-center text-sm md:text-base"
             >
               <div className="absolute -bottom-1 -left-1 w-3 md:w-4 h-3 md:h-4 bg-purple-500" />
               View Work
