@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { GridPattern } from './styling';
 
@@ -6,24 +6,24 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-16 px-6 border-t border-purple-500/30 relative overflow-hidden">
+    <footer className="relative overflow-hidden border-t border-purple-500/30 px-6 py-16">
       <div className="absolute inset-0 bg-black" />
-      
+
       {/* Grid pattern */}
       <GridPattern />
-      
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-zinc-600 text-sm uppercase tracking-wider">
+
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
+          <p className="text-sm tracking-wider text-zinc-600 uppercase">
             © {currentYear} All rights reserved
           </p>
-          
+
           <div className="flex gap-12">
             <a
               href="https://dribbble.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-600 hover:text-purple-500 transition-colors duration-300 text-sm uppercase tracking-wider"
+              className="text-sm tracking-wider text-zinc-600 uppercase transition-colors duration-300 hover:text-purple-500"
             >
               Dribbble
             </a>
@@ -31,7 +31,7 @@ export const Footer = () => {
               href="https://behance.net"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-600 hover:text-purple-500 transition-colors duration-300 text-sm uppercase tracking-wider"
+              className="text-sm tracking-wider text-zinc-600 uppercase transition-colors duration-300 hover:text-purple-500"
             >
               Behance
             </a>
@@ -39,7 +39,7 @@ export const Footer = () => {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-600 hover:text-purple-500 transition-colors duration-300 text-sm uppercase tracking-wider"
+              className="text-sm tracking-wider text-zinc-600 uppercase transition-colors duration-300 hover:text-purple-500"
             >
               LinkedIn
             </a>

@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Navigation } from "@/components/Navigation";
-import { Hero } from "@/components/Hero";
-import { CV } from "@/components/CV";
-import { Companies } from "@/components/Companies";
-import { Portfolio } from "@/components/Portfolio";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
+import { useState } from 'react';
+import { Companies } from '@/components/Companies';
+import { Contact } from '@/components/Contact';
+import { CV } from '@/components/CV';
+import { Footer } from '@/components/Footer';
+import { Hero } from '@/components/Hero';
+import { Navigation } from '@/components/Navigation';
+import { Portfolio } from '@/components/Portfolio';
 
 export default function Home() {
   const [isCVOpen, setIsCVOpen] = useState(false);
@@ -26,4 +26,3 @@ export default function Home() {
     </div>
   );
 }
-

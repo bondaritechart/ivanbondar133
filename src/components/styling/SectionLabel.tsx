@@ -6,11 +6,10 @@ interface SectionLabelProps {
 
 export const SectionLabel = ({ children, centered = false, className = '' }: SectionLabelProps) => (
   <div className={`flex items-center gap-4 ${centered ? 'justify-center' : ''} ${className}`}>
-    <div className="h-[2px] w-8 md:w-12 bg-purple-500" />
-    <p className="text-xs md:text-sm text-purple-400 uppercase tracking-[0.2em] md:tracking-[0.3em]">
+    <div className="h-[2px] w-8 bg-purple-500 md:w-12" />
+    <p className="text-xs tracking-[0.2em] text-purple-400 uppercase md:text-sm md:tracking-[0.3em]">
       {children}
     </p>
-    {centered && <div className="h-[2px] w-8 md:w-12 bg-purple-500" />}
+    {centered && <div className="h-[2px] w-8 bg-purple-500 md:w-12" />}
   </div>
 );
-

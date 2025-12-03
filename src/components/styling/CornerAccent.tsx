@@ -46,4 +46,3 @@ export const CornerAccent = ({
     className={`absolute ${positionClasses[position]} ${sizeClasses[size]} ${colorClasses[color]} ${showOnClasses[showOn]} ${className}`}
   />
 );
-

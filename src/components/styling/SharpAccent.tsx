@@ -38,19 +38,18 @@ const colorClasses: Record<Color, string> = {
   fuchsia: 'bg-fuchsia-600/20',
 };
 
-export const SharpAccent = ({ 
-  position, 
-  color = 'purple', 
+export const SharpAccent = ({
+  position,
+  color = 'purple',
   size = 'md',
-  className = '' 
+  className = '',
 }: SharpAccentProps) => {
   const { placement, clipPath } = positionStyles[position];
-  
+
   return (
-    <div 
+    <div
       className={`absolute ${placement} ${sizeClasses[size]} ${colorClasses[color]} ${className}`}
       style={{ clipPath }}
     />
   );
 };
-
