@@ -59,8 +59,7 @@ const skills: Skill[] = [
 export function Portfolio() {
   return (
     <section id="work" className="py-16 md:py-32 px-4 md:px-6 relative overflow-hidden border-t border-purple-500/30">
-      {/* Background */}
-      <div className="absolute inset-0 bg-black" />
+
       
       {/* Grid pattern */}
       <div className="absolute inset-0 opacity-10" style={{
