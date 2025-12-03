@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Code2, Palette, Database, Zap } from 'lucide-react';
-import { GridPattern, CornerAccent } from './styling';
+import { GridPattern, CornerAccent, SectionLabel, SharpAccent } from './styling';
 
 interface Skill {
   id: number;
@@ -63,9 +63,7 @@ export const Portfolio = () => (
     <GridPattern />
 
     {/* Sharp accent - hidden on mobile */}
-    <div className="hidden md:block absolute top-0 right-0 w-[400px] h-[400px] bg-purple-600/10" style={{
-      clipPath: 'polygon(100% 0, 100% 100%, 50% 100%)'
-    }} />
+    <SharpAccent position="top-right" className="hidden md:block w-[400px] h-[400px] bg-purple-600/10" />
 
     <div className="max-w-7xl mx-auto relative z-10">
       <motion.div
@@ -75,10 +73,7 @@ export const Portfolio = () => (
         viewport={{ once: true }}
         className="mb-12 md:mb-20"
       >
-        <div className="flex items-center gap-4 mb-6">
-          <div className="h-[2px] w-8 md:w-12 bg-purple-500" />
-          <p className="text-xs md:text-sm text-purple-400 uppercase tracking-[0.2em] md:tracking-[0.3em]">Expertise</p>
-        </div>
+        <SectionLabel className="mb-6">Expertise</SectionLabel>
         <h2 className="text-3xl md:text-5xl lg:text-7xl mb-4 md:mb-6">
           Technical Skills
         </h2>

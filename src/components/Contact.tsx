@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Linkedin, Github, Twitter, Send } from 'lucide-react';
 import { useState } from 'react';
-import { GridPattern, CornerAccent } from './styling';
+import { GridPattern, CornerAccent, SectionLabel, SharpAccent } from './styling';
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -58,9 +58,7 @@ export const Contact = () => {
       <GridPattern />
 
       {/* Sharp accent - smaller on mobile */}
-      <div className="absolute bottom-0 left-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-purple-600/10" style={{
-        clipPath: 'polygon(0 100%, 100% 100%, 0 0)'
-      }} />
+      <SharpAccent position="bottom-left" size="sm" className="bg-purple-600/10" />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <motion.div
@@ -69,11 +67,7 @@ export const Contact = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="h-[2px] w-8 md:w-12 bg-purple-500" />
-            <p className="text-xs md:text-sm text-purple-400 uppercase tracking-[0.2em] md:tracking-[0.3em]">Contact</p>
-            <div className="h-[2px] w-8 md:w-12 bg-purple-500" />
-          </div>
+          <SectionLabel centered className="mb-6">Contact</SectionLabel>
 
           <h2 className="text-3xl md:text-5xl lg:text-7xl mb-6 md:mb-8">
             Get in Touch

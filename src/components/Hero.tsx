@@ -1,17 +1,13 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { GridPattern, CornerAccent } from './styling';
+import { GridPattern, CornerAccent, SharpAccent } from './styling';
 
 export const Hero = () => (
   <section className="min-h-screen flex items-center justify-center px-4 md:px-6 relative overflow-hidden">
     {/* Sharp gradient accents */}
-    <div className="absolute top-0 right-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-purple-600/20" style={{
-      clipPath: 'polygon(100% 0, 100% 100%, 0 0)'
-    }}/>
-    <div className="absolute bottom-0 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-fuchsia-600/20" style={{
-      clipPath: 'polygon(0 100%, 100% 100%, 0 0)'
-    }}/>
+    <SharpAccent position="top-right" size="lg" />
+    <SharpAccent position="bottom-left" color="fuchsia" />
 
     {/* Technical grid */}
     <GridPattern opacity="medium" />
@@ -84,7 +80,6 @@ export const Hero = () => (
             href="#work"
             className="group bg-black relative w-full sm:w-auto px-8 md:px-10 py-3 md:py-4 border-2 border-purple-500 text-purple-400 hover:text-white hover:bg-purple-500 transition-all duration-300 uppercase tracking-widest text-center text-sm md:text-base"
           >
-            <CornerAccent position="bottom-left" size="md" showOn="always" />
             View Work
           </a>
         </motion.div>

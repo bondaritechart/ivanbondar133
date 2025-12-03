@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { GridPattern } from './styling';
+import { GridPattern, SectionLabel } from './styling';
 import { CompanyCard } from './CompanyCard';
 
 const companies = [
@@ -46,12 +46,9 @@ export const Companies = () => (
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="mb-12 md:mb-16 flex items-center gap-4"
+        className="mb-12 md:mb-16"
       >
-        <div className="h-[2px] w-8 md:w-12 bg-purple-500" />
-        <p className="text-xs md:text-sm text-purple-400 uppercase tracking-[0.2em] md:tracking-[0.3em]">
-          Career Path
-        </p>
+        <SectionLabel>Career Path</SectionLabel>
       </motion.div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
         {companies.map((company, index) => (
