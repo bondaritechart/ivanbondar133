@@ -1,9 +1,17 @@
-"use client";
-
-import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, Twitter } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Linkedin, Github, Twitter, Send } from 'lucide-react';
+import { useState } from 'react';
 
 export function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [showPlane, setShowPlane] = useState(false);
+
   const socialLinks = [
     { icon: Mail, href: 'mailto:ivanbondar133@gmail.com', label: 'Email' },
     { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
@@ -11,87 +19,208 @@ export function Contact() {
     { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' }
   ];
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setShowPlane(true);
+
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+
+      // Hide plane after animation
+      setTimeout(() => {
+        setShowPlane(false);
+      }, 2000);
+
+      // Reset success message after 3 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 3000);
+    }, 1000);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
-    <section id="contact" className="py-16 md:py-32 px-4 md:px-6 relative overflow-hidden border-t border-purple-500/30">
-      {/* Background */}
-      <div className="absolute inset-0 bg-black" />
-      
-      {/* Grid pattern */}
-      <div className="absolute inset-0 opacity-10" style={{
-        backgroundImage: 'linear-gradient(rgba(168,85,247,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.5) 1px, transparent 1px)',
-        backgroundSize: '50px 50px'
-      }} />
-      
-      {/* Sharp accent - smaller on mobile */}
-      <div className="absolute bottom-0 left-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-purple-600/10" style={{
-        clipPath: 'polygon(0 100%, 100% 100%, 0 0)'
-      }} />
+      <section id="contact" className="py-16 md:py-32 px-4 md:px-6 relative overflow-hidden border-t border-purple-500/30">
+        {/* Background */}
+        <div className="absolute inset-0 bg-black" />
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="h-[2px] w-8 md:w-12 bg-purple-500" />
-            <p className="text-xs md:text-sm text-purple-400 uppercase tracking-[0.2em] md:tracking-[0.3em]">Contact</p>
-            <div className="h-[2px] w-8 md:w-12 bg-purple-500" />
-          </div>
-          
-          <h2 className="text-3xl md:text-5xl lg:text-7xl mb-6 md:mb-8">
-            Get in Touch
-          </h2>
-          
-          <p className="text-sm md:text-lg text-zinc-500 mb-12 md:mb-16 max-w-2xl mx-auto uppercase tracking-wider px-4">
-            Ready to discuss your project? Let&apos;s connect and build something extraordinary together.
-          </p>
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-10" style={{
+          backgroundImage: 'linear-gradient(rgba(168,85,247,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.5) 1px, transparent 1px)',
+          backgroundSize: '50px 50px'
+        }} />
 
+        {/* Sharp accent - smaller on mobile */}
+        <div className="absolute bottom-0 left-0 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-purple-600/10" style={{
+          clipPath: 'polygon(0 100%, 100% 100%, 0 0)'
+        }} />
+
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="mb-12 md:mb-16 px-4"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
           >
-            <a
-              href="mailto:ivanbondar133@gmail.com"
-              className="group relative inline-block border-2 border-purple-500 px-6 md:px-12 py-4 md:py-6 overflow-hidden"
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="h-[2px] w-8 md:w-12 bg-purple-500" />
+              <p className="text-xs md:text-sm text-purple-400 uppercase tracking-[0.2em] md:tracking-[0.3em]">Contact</p>
+              <div className="h-[2px] w-8 md:w-12 bg-purple-500" />
+            </div>
+
+            <h2 className="text-3xl md:text-5xl lg:text-7xl mb-6 md:mb-8">
+              Get in Touch
+            </h2>
+
+            <p className="text-sm md:text-lg text-zinc-500 mb-12 md:mb-16 max-w-2xl mx-auto uppercase tracking-wider px-4">
+              Ready to discuss your project? Let's connect and build something extraordinary together.
+            </p>
+
+            {/* Contact Form */}
+            <motion.form
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                onSubmit={handleSubmit}
+                className="mb-12 md:mb-16 max-w-2xl mx-auto text-left"
             >
-              <div className="absolute inset-0 bg-purple-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              <div className="absolute -top-1 -right-1 w-3 md:w-4 h-3 md:h-4 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute -bottom-1 -left-1 w-3 md:w-4 h-3 md:h-4 bg-purple-500" />
-              <div className="relative text-sm md:text-xl lg:text-3xl text-white uppercase tracking-wider break-all">
-                ivanbondar133@gmail.com
-              </div>
-            </a>
-          </motion.div>
+              <div className="space-y-6">
+                {/* Name Field */}
+                <div className="relative group">
+                  <div className="absolute -top-1 -left-1 w-3 h-3 bg-purple-500 opacity-0 group-focus-within:opacity-100 transition-opacity" />
+                  <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="YOUR NAME"
+                      className="w-full bg-black border-2 border-purple-500/30 focus:border-purple-500 px-6 py-4 text-white placeholder:text-zinc-600 uppercase tracking-wider text-sm transition-colors duration-300 outline-none"
+                  />
+                </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="flex justify-center gap-3 md:gap-4"
-          >
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center"
-                aria-label={link.label}
-              >
-                <div className="absolute inset-0 border-2 border-purple-500/30 bg-black group-hover:border-purple-500 transition-all duration-300" />
-                <div className="absolute -top-1 -right-1 w-2 h-2 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <link.icon className="relative text-purple-500 group-hover:text-white transition-colors duration-300" size={20} />
-              </a>
-            ))}
+                {/* Email Field */}
+                <div className="relative group">
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-fuchsia-500 opacity-0 group-focus-within:opacity-100 transition-opacity" />
+                  <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="YOUR EMAIL"
+                      className="w-full bg-black border-2 border-purple-500/30 focus:border-purple-500 px-6 py-4 text-white placeholder:text-zinc-600 uppercase tracking-wider text-sm transition-colors duration-300 outline-none"
+                  />
+                </div>
+
+                {/* Message Field */}
+                <div className="relative group">
+                  <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-purple-500 opacity-0 group-focus-within:opacity-100 transition-opacity" />
+                  <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-fuchsia-500 opacity-0 group-focus-within:opacity-100 transition-opacity" />
+                  <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      rows={6}
+                      placeholder="YOUR MESSAGE"
+                      className="w-full bg-black border-2 border-purple-500/30 focus:border-purple-500 px-6 py-4 text-white placeholder:text-zinc-600 uppercase tracking-wider text-sm transition-colors duration-300 outline-none resize-none"
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <div className="relative">
+                  <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="group relative w-full px-8 py-4 border-2 border-purple-500 bg-purple-600 hover:bg-purple-500 disabled:bg-purple-800 disabled:cursor-not-allowed overflow-hidden transition-all duration-300"
+                  >
+                    <div className="absolute inset-0 bg-purple-500 translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
+                    <div className="absolute -top-1 -right-1 w-4 h-4 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span className="relative text-white uppercase tracking-widest flex items-center justify-center gap-3">
+                    {isSubmitting ? (
+                        'SENDING...'
+                    ) : (
+                        <>
+                          <Send size={18} />
+                          SEND MESSAGE
+                        </>
+                    )}
+                  </span>
+                  </button>
+
+                  {/* Flying Plane Animation */}
+                  <AnimatePresence>
+                    {showPlane && (
+                        <motion.div
+                            initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
+                            animate={{
+                              x: [0, 200, 400, 600],
+                              y: [0, -100, -200, -300],
+                              opacity: [1, 1, 0.5, 0],
+                              scale: [1, 1.2, 1.5, 2],
+                              rotate: [0, 15, 30, 45]
+                            }}
+                            transition={{
+                              duration: 2,
+                              ease: "easeOut"
+                            }}
+                            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-50"
+                        >
+                          <Send className="text-purple-400" size={24} />
+                        </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Success Message */}
+                {submitStatus === 'success' && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="border-2 border-green-500/50 bg-green-500/10 px-6 py-4 text-green-400 text-center uppercase tracking-wider text-sm"
+                    >
+                      Message sent successfully!
+                    </motion.div>
+                )}
+              </div>
+            </motion.form>
+
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+                className="flex justify-center gap-3 md:gap-4"
+            >
+              {socialLinks.map((link) => (
+                  <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center"
+                      aria-label={link.label}
+                  >
+                    <div className="absolute inset-0 border-2 border-purple-500/30 bg-black group-hover:border-purple-500 transition-all duration-300" />
+                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <link.icon className="relative text-purple-500 group-hover:text-white transition-colors duration-300" size={20} />
+                  </a>
+              ))}
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
   );
 }
