@@ -14,6 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+    <head>
+      <title>Ivan Bondar - Full-Stack Developer</title>
+      <link rel="icon" href="/favicon.png" sizes="any" />
+    </head>
       <body>{children}</body>
     </html>
   );
