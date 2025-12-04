@@ -27,7 +27,7 @@ export const Hero = () => (
         </span>
       </motion.div>
 
-      <div className="relative">
+      <div className="relative p-4 mb-10">
         <div className="absolute top-0 right-[-200px] left-[-200px] hidden h-[1px] bg-gradient-to-r from-transparent via-purple-500 to-transparent md:block" />
         <div className="absolute right-[-200px] bottom-0 left-[-200px] hidden h-[1px] bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent md:block" />
         <div className="absolute top-[-150px] bottom-[-150px] left-0 hidden w-[1px] bg-gradient-to-b from-transparent via-purple-500 to-transparent md:block" />
@@ -46,7 +46,7 @@ export const Hero = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mx-auto mb-8 max-w-3xl px-4 pb-6 text-sm leading-relaxed tracking-wider text-zinc-400 uppercase md:mb-12 md:text-lg lg:text-xl"
+          className="mx-auto max-w-3xl px-4 pb-4 text-sm leading-relaxed tracking-wider text-zinc-400 uppercase md:text-lg lg:text-xl"
         >
           Full-Stack Developer with rich experience in building innovative web applications.
           Combining creativity with technical expertise to deliver cutting-edge solutions.
