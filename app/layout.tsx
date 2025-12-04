@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Ivan Bondar - Full-Stack Developer Portfolio',
+  title: 'Ivan Bondar - Full-Stack Developer',
   description:
     'Full-Stack Developer with rich experience in building innovative web applications. Combining creativity with technical expertise to deliver cutting-edge solutions.',
 };

@@ -22,7 +22,6 @@ export default function Home() {
         <Portfolio />
         <Contact />
       </main>
-      <Footer />
     </div>
   );
 }

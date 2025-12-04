@@ -27,7 +27,7 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
     {
       period: '2021 - present',
       position: 'Senior Software Engineer',
-      company: 'FREELANCE',
+      company: 'Vention',
       description:
         'Led development of complex web applications using React, Next.js, and TypeScript. Architected scalable solutions, mentored junior developers, and optimized performance across multiple projects.',
     },
@@ -41,7 +41,7 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
     {
       period: '2017 - 2019',
       position: 'Junior Software Engineer',
-      company: 'STROKES',
+      company: 'STForex',
       description:
         'Built interactive web interfaces, maintained codebase quality, participated in code reviews, and rapidly expanded technical expertise in modern frontend technologies.',
     },
@@ -49,8 +49,8 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
 
   const education = {
     degree: 'Bachelor of Economics',
-    university: 'ZZGU-ZID INSTITUTE OF ECONOMY',
-    period: '2015 - 2019',
+    university: 'Krivoy Rog National University',
+    period: '2007 - 2012',
   };
 
   const skills = [
@@ -70,12 +70,12 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
       logo: '/images/85e599c989c466bac62d32cb8e1d5831ff4a2cc0.png',
     },
     {
-      name: 'elemy',
+      name: 'Elemy',
       url: 'https://care.elemy.com/peds_b/',
       logo: '/images/8c88f966c88723e1fb4098ca5f9a50a2019e82ff.png',
     },
     {
-      name: 'coverwallet',
+      name: 'Coverwallet',
       url: 'https://www.coverwallet.com/',
       logo: '/images/2451566175a740f38ecee00e8b5679d1687ac669.png',
     },
@@ -98,27 +98,17 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-[100] overflow-y-auto"
     >
-      {/* Backdrop */}
       <div className="fixed inset-0 bg-black/95 backdrop-blur-sm" onClick={onClose} />
-
-      {/* Close button */}
       <button
         onClick={onClose}
         className="group fixed top-4 right-4 z-[110] h-10 w-10 border-2 border-purple-500/50 bg-black transition-all duration-300 hover:border-purple-500 hover:bg-purple-500/20 md:top-8 md:right-8 md:h-12 md:w-12"
       >
         <X className="mx-auto h-5 w-5 text-purple-500 transition-colors group-hover:text-white md:h-6 md:w-6" />
       </button>
-
-      {/* Content */}
       <div className="relative z-[105] min-h-screen px-4 py-16 md:px-6 md:py-24">
-        {/* Grid pattern */}
         <GridPattern />
-
-        {/* Sharp accents - smaller on mobile */}
         <SharpAccent position="top-left" className="bg-purple-600/10" />
-
         <div className="relative z-10 mx-auto max-w-6xl">
-          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -139,7 +129,7 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
                 </p>
               </div>
 
-              <div className="relative self-start border-2 border-purple-500/30 bg-black p-4 md:p-6">
+              <div className="w-[350px] ml-auto relative self-start border-2 border-purple-500/30 bg-black p-4 md:p-6">
                 <CornerAccent position="top-right" size="md" showOn="always" />
                 <CornerAccent position="bottom-left" size="md" color="fuchsia" showOn="always" />
 

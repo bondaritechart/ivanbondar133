@@ -61,8 +61,6 @@ export const Navigation = ({ onOpenCV }: NavigationProps) => {
               className="h-8 w-auto md:h-10"
             />
           </motion.a>
-
-          {/* Desktop Menu */}
           <div className="hidden items-center gap-8 md:flex">
             <button
               onClick={handleOpenCV}
@@ -71,16 +69,16 @@ export const Navigation = ({ onOpenCV }: NavigationProps) => {
               CV
             </button>
             <button
+                onClick={() => scrollToSection('career')}
+                className="text-sm tracking-wider text-zinc-400 uppercase transition-colors duration-300 hover:text-white"
+            >
+              Career
+            </button>
+            <button
               onClick={() => scrollToSection('work')}
               className="text-sm tracking-wider text-zinc-400 uppercase transition-colors duration-300 hover:text-white"
             >
-              Portfolio
-            </button>
-            <button
-              onClick={() => scrollToSection('career')}
-              className="text-sm tracking-wider text-zinc-400 uppercase transition-colors duration-300 hover:text-white"
-            >
-              Career
+              Skills
             </button>
             <button
               onClick={() => scrollToSection('contact')}

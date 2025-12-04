@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Linkedin, Github, Twitter, Send } from 'lucide-react';
+import { Mail, Linkedin, Github, Send } from 'lucide-react';
 import { useState } from 'react';
 import { GridPattern, CornerAccent, SectionLabel, SharpAccent } from './styling';
 
@@ -17,9 +17,8 @@ export const Contact = () => {
 
   const socialLinks = [
     { icon: Mail, href: 'mailto:ivanbondar133@gmail.com', label: 'Email' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/ivan-bondar-009456a7', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/bondaritechart', label: 'GitHub' },
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,22 +26,34 @@ export const Contact = () => {
     setIsSubmitting(true);
     setShowPlane(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-      // Hide plane after animation
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+
       setTimeout(() => {
         setShowPlane(false);
       }, 2000);
 
-      // Reset success message after 3 seconds
       setTimeout(() => {
         setSubmitStatus('idle');
       }, 3000);
-    }, 1000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -57,12 +68,8 @@ export const Contact = () => {
       id="contact"
       className="relative overflow-hidden border-t border-purple-500/30 px-4 py-16 md:px-6 md:py-32"
     >
-      {/* Grid pattern */}
       <GridPattern />
-
-      {/* Sharp accent - smaller on mobile */}
       <SharpAccent position="bottom-left" size="sm" className="bg-purple-600/10" />
-
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -73,15 +80,11 @@ export const Contact = () => {
           <SectionLabel centered className="mb-6">
             Contact
           </SectionLabel>
-
           <h2 className="mb-6 text-3xl md:mb-8 md:text-5xl lg:text-7xl">Get in Touch</h2>
-
           <p className="mx-auto mb-12 max-w-2xl px-4 text-sm tracking-wider text-zinc-500 uppercase md:mb-16 md:text-lg">
             Ready to discuss your project? Let&apos;s connect and build something extraordinary
             together.
           </p>
-
-          {/* Contact Form */}
           <motion.form
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +94,6 @@ export const Contact = () => {
             className="mx-auto mb-12 max-w-2xl text-left md:mb-16"
           >
             <div className="space-y-6">
-              {/* Name Field */}
               <div className="group relative">
                 <CornerAccent position="top-left" size="xs" showOn="focus" className="h-3 w-3" />
                 <input
@@ -104,8 +106,6 @@ export const Contact = () => {
                   className="w-full border-2 border-purple-500/30 bg-black px-6 py-4 text-sm tracking-wider text-white uppercase transition-colors duration-300 outline-none placeholder:text-zinc-600 focus:border-purple-500"
                 />
               </div>
-
-              {/* Email Field */}
               <div className="group relative">
                 <CornerAccent
                   position="top-right"
@@ -124,8 +124,6 @@ export const Contact = () => {
                   className="w-full border-2 border-purple-500/30 bg-black px-6 py-4 text-sm tracking-wider text-white uppercase transition-colors duration-300 outline-none placeholder:text-zinc-600 focus:border-purple-500"
                 />
               </div>
-
-              {/* Message Field */}
               <div className="group relative">
                 <CornerAccent position="bottom-left" size="xs" showOn="focus" className="h-3 w-3" />
                 <CornerAccent
@@ -145,8 +143,6 @@ export const Contact = () => {
                   className="w-full resize-none border-2 border-purple-500/30 bg-black px-6 py-4 text-sm tracking-wider text-white uppercase transition-colors duration-300 outline-none placeholder:text-zinc-600 focus:border-purple-500"
                 />
               </div>
-
-              {/* Submit Button */}
               <div className="relative">
                 <button
                   type="submit"
@@ -166,8 +162,6 @@ export const Contact = () => {
                     )}
                   </span>
                 </button>
-
-                {/* Flying Plane Animation */}
                 <AnimatePresence>
                   {showPlane && (
                     <motion.div
@@ -199,6 +193,17 @@ export const Contact = () => {
                   className="border-2 border-green-500/50 bg-green-500/10 px-6 py-4 text-center text-sm tracking-wider text-green-400 uppercase"
                 >
                   Message sent successfully!
+                </motion.div>
+              )}
+
+              {/* Error Message */}
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="border-2 border-red-500/50 bg-red-500/10 px-6 py-4 text-center text-sm tracking-wider text-red-400 uppercase"
+                >
+                  Failed to send message. Please try again.
                 </motion.div>
               )}
             </div>
