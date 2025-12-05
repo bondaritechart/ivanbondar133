@@ -18,7 +18,7 @@ export const Hero = () => (
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative mb-6 inline-block border-2 border-purple-500 bg-black px-4 py-2 md:mb-8 md:px-6"
+        className="relative mb-6 inline-block border-2 border-purple-500 px-4 py-2 md:mb-8 md:px-6"
       >
         <CornerAccent position="top-right" showOn="always" />
         <CornerAccent position="bottom-left" color="fuchsia" showOn="always" />
@@ -70,7 +70,7 @@ export const Hero = () => (
 
         <a
           href="#work"
-          className="group relative w-full border-2 border-purple-500 bg-black px-8 py-3 text-center text-sm tracking-widest text-purple-400 uppercase transition-all duration-300 hover:bg-purple-500 hover:text-white sm:w-auto md:px-10 md:py-4 md:text-base"
+          className="group relative w-full border-2 border-purple-500 bg-stone-950 px-8 py-3 text-center text-sm tracking-widest text-purple-400 uppercase transition-all duration-300 hover:bg-purple-500 hover:text-white sm:w-auto md:px-10 md:py-4 md:text-base"
         >
           View Work
         </a>

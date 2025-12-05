@@ -103,7 +103,7 @@ export const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="YOUR NAME"
-                  className="w-full border-2 border-purple-500/30 bg-black px-6 py-4 text-sm tracking-wider text-white uppercase transition-colors duration-300 outline-none placeholder:text-zinc-600 focus:border-purple-500"
+                  className="w-full border-2 border-purple-500/30 px-6 py-4 text-sm tracking-wider text-white uppercase transition-colors duration-300 outline-none placeholder:text-zinc-600 focus:border-purple-500"
                 />
               </div>
               <div className="group relative">
@@ -121,7 +121,7 @@ export const Contact = () => {
                   onChange={handleChange}
                   required
                   placeholder="YOUR EMAIL"
-                  className="w-full border-2 border-purple-500/30 bg-black px-6 py-4 text-sm tracking-wider text-white uppercase transition-colors duration-300 outline-none placeholder:text-zinc-600 focus:border-purple-500"
+                  className="w-full border-2 border-purple-500/30 px-6 py-4 text-sm tracking-wider text-white uppercase transition-colors duration-300 outline-none placeholder:text-zinc-600 focus:border-purple-500"
                 />
               </div>
               <div className="group relative">
@@ -140,7 +140,7 @@ export const Contact = () => {
                   required
                   rows={6}
                   placeholder="YOUR MESSAGE"
-                  className="w-full resize-none border-2 border-purple-500/30 bg-black px-6 py-4 text-sm tracking-wider text-white uppercase transition-colors duration-300 outline-none placeholder:text-zinc-600 focus:border-purple-500"
+                  className="w-full resize-none border-2 border-purple-500/30 px-6 py-4 text-sm tracking-wider text-white uppercase transition-colors duration-300 outline-none placeholder:text-zinc-600 focus:border-purple-500"
                 />
               </div>
               <div className="relative">

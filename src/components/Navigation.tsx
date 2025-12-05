@@ -34,6 +34,12 @@ export const Navigation = ({ onOpenCV }: NavigationProps) => {
     setIsMobileMenuOpen(false);
   };
 
+  const NAV_LINKS = [
+    { label: 'CV', onClick: handleOpenCV },
+    { label: 'Career', onClick: () => scrollToSection('career') },
+    { label: 'Skills', onClick: () => scrollToSection('work') },
+  ];
+
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
@@ -62,24 +68,15 @@ export const Navigation = ({ onOpenCV }: NavigationProps) => {
             />
           </motion.a>
           <div className="hidden items-center gap-8 md:flex">
-            <button
-              onClick={handleOpenCV}
-              className="text-sm tracking-wider text-zinc-400 uppercase transition-colors duration-300 hover:text-white"
-            >
-              CV
-            </button>
-            <button
-                onClick={() => scrollToSection('career')}
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.label}
+                onClick={link.onClick}
                 className="text-sm tracking-wider text-zinc-400 uppercase transition-colors duration-300 hover:text-white"
-            >
-              Career
-            </button>
-            <button
-              onClick={() => scrollToSection('work')}
-              className="text-sm tracking-wider text-zinc-400 uppercase transition-colors duration-300 hover:text-white"
-            >
-              Skills
-            </button>
+              >
+                {link.label}
+              </button>
+            ))}
             <button
               onClick={() => scrollToSection('contact')}
               className="group relative overflow-hidden border-2 border-purple-500 px-6 py-2.5"
@@ -115,24 +112,15 @@ export const Navigation = ({ onOpenCV }: NavigationProps) => {
             className="overflow-hidden border-b border-purple-500/30 bg-black/95 backdrop-blur-xl md:hidden"
           >
             <div className="space-y-4 px-6 py-6">
-              <button
-                onClick={handleOpenCV}
-                className="block w-full border-b border-purple-500/20 py-3 text-left text-sm tracking-wider text-zinc-400 uppercase transition-colors duration-300 hover:text-white"
-              >
-                CV
-              </button>
-              <button
-                onClick={() => scrollToSection('work')}
-                className="block w-full border-b border-purple-500/20 py-3 text-left text-sm tracking-wider text-zinc-400 uppercase transition-colors duration-300 hover:text-white"
-              >
-                Portfolio
-              </button>
-              <button
-                onClick={() => scrollToSection('career')}
-                className="block w-full border-b border-purple-500/20 py-3 text-left text-sm tracking-wider text-zinc-400 uppercase transition-colors duration-300 hover:text-white"
-              >
-                Career
-              </button>
+              {NAV_LINKS.map((link) => (
+                <button
+                  key={link.label}
+                  onClick={link.onClick}
+                  className="block w-full border-b border-purple-500/20 py-3 text-left text-sm tracking-wider text-zinc-400 uppercase transition-colors duration-300 hover:text-white"
+                >
+                  {link.label}
+                </button>
+              ))}
               <button
                 onClick={() => scrollToSection('contact')}
                 className="mt-4 w-full border-2 border-purple-500 bg-purple-500 px-6 py-3 text-sm tracking-wider text-white uppercase transition-colors hover:bg-purple-600"

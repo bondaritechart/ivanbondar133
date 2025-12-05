@@ -21,7 +21,7 @@ export const CompanyCard = ({ name, logo, url, description, index }: CompanyCard
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    className="group relative flex min-h-[220px] flex-col border-2 border-purple-500/30 bg-black p-5 transition-all duration-300 hover:border-purple-500 md:min-h-[280px]"
+    className="group relative flex min-h-[220px] flex-col border-2 border-purple-500/30 p-5 transition-all duration-300 hover:border-purple-500 md:min-h-[280px]"
   >
     <CornerAccent position="top-left" />
     <CornerAccent position="bottom-right" color="fuchsia" />

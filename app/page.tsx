@@ -7,19 +7,19 @@ import { CV } from '@/components/CV';
 import { Footer } from '@/components/Footer';
 import { Hero } from '@/components/Hero';
 import { Navigation } from '@/components/Navigation';
-import { Portfolio } from '@/components/Portfolio';
+import { Skills } from '@/components/skills';
 
 export default function Home() {
   const [isCVOpen, setIsCVOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-black text-zinc-50">
+    <div className="min-h-screen bg-stone-950 text-zinc-50">
       <Navigation onOpenCV={() => setIsCVOpen(true)} />
       <CV isOpen={isCVOpen} onClose={() => setIsCVOpen(false)} />
       <main>
         <Hero />
         <Companies />
-        <Portfolio />
+        <Skills />
         <Contact />
       </main>
     </div>
