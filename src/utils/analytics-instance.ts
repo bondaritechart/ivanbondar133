@@ -19,6 +19,8 @@ export function getAnalytics(): Analytics {
       trackAction: async () => {},
       getAnonymousId: () => '',
       resetAnonymousId: () => {},
+      requestLocationPermission: async () => null,
+      getCurrentLocationData: () => null,
     } as unknown as Analytics;
   }
 
@@ -27,6 +29,7 @@ export function getAnalytics(): Analytics {
       apiUrl: process.env.NEXT_PUBLIC_ANALYTICS_API_URL || '/api/analytics',
       cookieName: 'anonymous_user_id',
       cookieExpireDays: 365,
+      enableGeolocation: true, // Enable location tracking
     });
   }
 

@@ -12,7 +12,6 @@ export function AnalyticsProvider() {
     if (pathname) {
       analytics.trackPageView(pathname, {
         referrer: document.referrer,
-        userAgent: navigator.userAgent,
         screenWidth: window.innerWidth,
         screenHeight: window.innerHeight,
       });
