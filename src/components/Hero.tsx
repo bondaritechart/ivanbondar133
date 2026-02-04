@@ -64,7 +64,7 @@ export const Hero = () => (
           className="group relative w-full overflow-hidden border-2 border-purple-500 bg-purple-600 px-8 py-3 text-center transition-all duration-300 hover:bg-purple-500 sm:w-auto md:px-10 md:py-4"
         >
           <span className="relative text-sm tracking-widest text-white uppercase md:text-base">
-            Get Started
+            Ask a question
           </span>
         </a>
 
@@ -72,7 +72,7 @@ export const Hero = () => (
           href="#work"
           className="group relative w-full border-2 border-purple-500 bg-stone-950 px-8 py-3 text-center text-sm tracking-widest text-purple-400 uppercase transition-all duration-300 hover:bg-purple-500 hover:text-white sm:w-auto md:px-10 md:py-4 md:text-base"
         >
-          View Work
+          Skills
         </a>
       </motion.div>
     </motion.div>
