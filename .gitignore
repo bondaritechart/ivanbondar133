@@ -42,3 +42,6 @@ Thumbs.db
 
 # Testing
 coverage/
+/ANALYTICS_SETUP.md
+/src/utils/ANALYTICS_README.md
+/src/utils/analytics-example.tsx

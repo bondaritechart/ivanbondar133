@@ -5,6 +5,7 @@ import { Calendar, Mail, MapPin, X } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect } from 'react';
 import { CornerAccent, GridPattern, SectionHeading, SectionLabel, SharpAccent } from './styling';
+import { analytics } from "@/utils/analytics-instance";
 
 interface CVProps {
   isOpen: boolean;
@@ -15,6 +16,7 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      analytics.track('CV opened');
     }
     return () => {
       document.body.style.overflow = '';

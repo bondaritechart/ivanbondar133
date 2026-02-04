@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { AnalyticsProvider } from "@/components/AnalyticsProvider";
 
 export const metadata: Metadata = {
   title: 'Ivan Bondar - Full-Stack Developer',
@@ -18,7 +19,10 @@ export default function RootLayout({
       <title>Ivan Bondar - Full-Stack Developer</title>
       <link rel="icon" href="/favicon.png" sizes="any" />
     </head>
-      <body>{children}</body>
+      <body>
+        <AnalyticsProvider />
+        {children}
+      </body>
     </html>
   );
 }
