@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // Validate required fields
-    if (!body.event) {
+    if (!body.eventName) {
       return NextResponse.json(
         { error: 'Event name is required' },
         { status: 400 }
