@@ -1,6 +1,6 @@
 'use client';
 
-import { Analytics } from './analytics';
+import { Analytics } from '@powerlimit/analytics';
 
 // Create singleton instance
 let analyticsInstance: Analytics | null = null;

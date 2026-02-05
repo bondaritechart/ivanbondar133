@@ -45,7 +45,7 @@ const companies = [
 export const Companies = () => (
   <section
     id="career"
-    className="relative overflow-hidden border-t border-purple-500/30 px-4 py-16 md:px-6 md:py-24"
+    className="relative overflow-hidden border-t border-purple-500/30 px-4 py-16 md:px-6 md:py-32"
   >
     <GridPattern />
     <div className="relative z-10 mx-auto max-w-7xl">

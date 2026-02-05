@@ -127,7 +127,7 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
                   <span className="text-purple-500">BONDAR</span>
                 </h1>
                 <p className="mb-6 text-lg tracking-wider text-zinc-400 uppercase md:mb-8 md:text-xl">
-                  Senior Software Developer
+                  Senior Software Engineer
                 </p>
               </div>
 
@@ -194,44 +194,6 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
                   </p>
                   <p className="leading-relaxed text-zinc-400">{job.description}</p>
                 </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Companies */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-12 md:mb-20"
-          >
-            <SectionHeading>Companies Worked With</SectionHeading>
-
-            <div className="grid grid-cols-2 gap-3 md:grid-cols-5 md:gap-4">
-              {companies.map((company, index) => (
-                <motion.a
-                  key={company.name}
-                  href={company.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="group relative flex min-h-[100px] items-center justify-center border-2 border-purple-500/30 bg-black p-4 transition-all duration-300 hover:border-purple-500 md:min-h-[120px] md:p-6"
-                >
-                  <CornerAccent position="top-left" size="xs" />
-                  <CornerAccent position="bottom-right" size="xs" color="fuchsia" />
-                  <div className="relative h-8 w-full md:h-12">
-                    <Image
-                      src={company.logo}
-                      alt={company.name}
-                      fill
-                      className="object-contain opacity-70 transition-opacity duration-300 group-hover:opacity-100"
-                    />
-                  </div>
-                </motion.a>
               ))}
             </div>
           </motion.div>
