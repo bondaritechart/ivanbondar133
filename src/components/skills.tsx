@@ -1,68 +1,70 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Code2, Palette, Database, Zap } from 'lucide-react';
+import { Blocks, Zap, Layers, ShieldCheck, Rocket, Users } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
+import { Pill } from '@/components/ui/Pill';
 import { GridPattern, CornerAccent, SectionLabel, SharpAccent } from './styling';
-import { Typography } from './ui';
+import { Button, Typography } from './ui';
 
-interface Skill {
-  id: number;
-  name: string;
-  category: string;
-  experience: string;
-  icon: React.ComponentType<{ className?: string; size?: number }>;
-}
-
-const skills: Skill[] = [
+const skills = [
   {
     id: 1,
-    name: 'Scalable Frontend Architecture',
-    category: 'FRONTEND DEVELOPMENT',
-    experience: '5+ years',
-    icon: Code2,
+    title: 'Scalable Frontend Architecture',
+    description: 'Designing scalable frontend architectures for complex, long-living products.',
+    tools: ['React', 'Next.js', 'TypeScript', 'Monorepos'],
+    result: 'Cleaner codebase, faster onboarding, reduced technical debt',
+    icon: Blocks,
   },
   {
     id: 2,
-    name: 'TYPESCRIPT & JAVASCRIPT',
-    category: 'PROGRAMMING LANGUAGES',
-    experience: '7+ years',
-    icon: Code2,
-  },
-  {
-    id: 3,
-    name: 'UI/UX DESIGN',
-    category: 'DESIGN & PROTOTYPING',
-    experience: '4+ years',
-    icon: Palette,
-  },
-  {
-    id: 4,
-    name: 'NODE.JS & DATABASES',
-    category: 'BACKEND DEVELOPMENT',
-    experience: '3+ years',
-    icon: Database,
-  },
-  {
-    id: 5,
-    name: 'TAILWIND CSS',
-    category: 'STYLING FRAMEWORKS',
-    experience: '4+ years',
+    title: 'Performance Optimization',
+    description: 'Optimizing rendering, data fetching and bundle size in production applications.',
+    tools: ['SSR / CSR', 'GraphQL', 'Code Splitting'],
+    result: 'Faster load times and improved real-user performance',
     icon: Zap,
   },
   {
+    id: 3,
+    title: 'Backend Architecture (NestJS)',
+    description:
+      'Building backend services and full-stack architectures with a strong frontend focus.',
+    tools: ['NestJS', 'REST', 'GraphQL', 'Auth flows'],
+    result: 'End-to-end solutions with predictable APIs and scalable architecture',
+    icon: Layers,
+  },
+  {
+    id: 4,
+    title: 'Testing & Frontend Reliability',
+    description:
+      'Defining testing strategies to ensure frontend stability and confidence in changes.',
+    tools: ['Jest', 'React Testing Library', 'Cypress'],
+    result: 'Test coverage up to ~85% and fewer production regressions',
+    icon: ShieldCheck,
+  },
+  {
+    id: 5,
+    title: 'Product-Focused Feature Delivery',
+    description:
+      'Delivering complex product features in close collaboration with product and design teams.',
+    tools: ['React', 'Next.js', 'Stripe', 'A/B Testing'],
+    result: 'Successful launches of conversion funnels and core product features',
+    icon: Rocket,
+  },
+  {
     id: 6,
-    name: 'GIT & CI/CD',
-    category: 'DEVOPS & VERSION CONTROL',
-    experience: '7+ years',
-    icon: Code2,
+    title: 'Leadership',
+    description: 'Leading frontend initiatives, mentoring engineers and setting best practices.',
+    tools: ['Code Reviews', 'Mentorship', 'CI/CD', 'Git'],
+    result: 'Higher development velocity and consistent code quality',
+    icon: Users,
   },
 ];
 
 export const Skills = () => (
   <section
     id="skills"
-    className="border-primary/30 relative overflow-hidden border-t py-16 md:py-32"
+    className="border-primary/30 relative overflow-hidden border-t py-16 md:py-24"
   >
     <GridPattern />
     <SharpAccent
@@ -70,7 +72,7 @@ export const Skills = () => (
       className="hidden h-[400px] w-[400px] bg-purple-600/10 md:block"
     />
 
-    <Container className="relative z-10">
+    <Container className="relative z-10 space-y-4 md:space-y-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +82,7 @@ export const Skills = () => (
       >
         <SectionLabel>Expertise</SectionLabel>
         <Typography variant="h2" as="h2">
-          Technical Skills
+          What I build & What I use
         </Typography>
         <Typography variant="description" className="max-w-2xl">
           Tools change. Engineering principles stay.
@@ -93,41 +95,33 @@ export const Skills = () => (
             key={skill.id}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.1 }}
+            transition={{ duration: 0.8, delay: index * 0.5 }}
             viewport={{ once: true }}
             className="group relative"
           >
-            <div className="border-primary/30 hover:border-primary relative flex flex-col border-2 p-6 transition-all duration-300 md:min-h-[200px] md:p-8">
+            <div className="border-primary/30 hover:border-primary relative flex h-full flex-col border-2 p-4 transition-all duration-300 md:min-h-50 md:p-6">
               <CornerAccent position="top-left" size="md" />
               <CornerAccent position="bottom-right" size="md" color="accent" />
-              <div className="mb-4 hidden md:mb-6 md:block">
-                <skill.icon
-                  className="text-primary transition-colors duration-300 group-hover:text-white"
-                  size={28}
-                />
-              </div>
-              <div className="mb-3 flex items-center gap-3 md:mb-4">
-                <div className="bg-primary h-[1px] w-6 md:w-8" />
-                <Typography variant="caption">{skill.category}</Typography>
-              </div>
-
-              <h3 className="group-hover:text-primary-active mb-3 text-xl transition-colors duration-300 md:mb-4 md:text-2xl">
-                {skill.name}
-              </h3>
-
-              <div className="mt-auto">
-                <div className="flex items-center gap-2">
-                  <div className="bg-primary/20 h-[2px] w-full">
-                    <div className="bg-primary h-full w-4/5" />
-                  </div>
-                  <span className="text-muted text-xs tracking-wider whitespace-nowrap uppercase md:text-sm">
-                    {skill.experience}
-                  </span>
+              <div className="relative flex h-full flex-col gap-4">
+                <skill.icon className="text-primary" size={38} />
+                <Typography variant="h5">{skill.title}</Typography>
+                <Typography variant="label">{skill.description}</Typography>
+                <div className="mt-auto flex flex-wrap gap-2">
+                  {skill.tools.map((tool) => (
+                    <Pill label={tool} key={tool} />
+                  ))}
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Typography variant="caption">Result</Typography>
+                  <Typography variant="label">{skill.result}</Typography>
                 </div>
               </div>
             </div>
           </motion.div>
         ))}
+      </div>
+      <div className="text-center">
+        <Button>Discover more</Button>
       </div>
     </Container>
   </section>

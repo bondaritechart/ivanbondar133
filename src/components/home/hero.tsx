@@ -70,10 +70,10 @@ export const Hero = () => (
         </a>
 
         <a
-          href="#work"
+          href="#companies"
           className="group relative w-full border-2 border-purple-500 bg-stone-950 px-8 py-3 text-center text-sm tracking-widest text-purple-400 uppercase transition-all duration-300 hover:bg-purple-500 hover:text-white sm:w-auto md:px-10 md:py-4 md:text-base"
         >
-          View examples
+          View my partners
         </a>
       </motion.div>
     </motion.div>

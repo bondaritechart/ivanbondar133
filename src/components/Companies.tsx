@@ -46,7 +46,7 @@ const companies = [
 export const Companies = () => (
   <section
     id="companies"
-    className="relative overflow-hidden border-t border-purple-500/30 py-16 md:py-32"
+    className="relative overflow-hidden border-t border-purple-500/30 py-16 md:py-24"
   >
     <GridPattern />
     <Container className="relative z-10">
@@ -63,6 +63,7 @@ export const Companies = () => (
           <CompanyCard key={company.name} {...company} index={index} />
         ))}
       </div>
+      <div className="text-center" />
     </Container>
   </section>
 );
