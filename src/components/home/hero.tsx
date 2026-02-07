@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { GridPattern, CornerAccent, SharpAccent } from './styling';
+import { GridPattern, CornerAccent, SharpAccent } from '../styling';
 
 export const Hero = () => (
   <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-4 md:px-6">
@@ -27,7 +27,7 @@ export const Hero = () => (
         </span>
       </motion.div>
 
-      <div className="relative p-4 mb-10">
+      <div className="relative mb-10 p-4">
         <div className="absolute top-0 right-[-200px] left-[-200px] hidden h-[1px] bg-gradient-to-r from-transparent via-purple-500 to-transparent md:block" />
         <div className="absolute right-[-200px] bottom-0 left-[-200px] hidden h-[1px] bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent md:block" />
         <div className="absolute top-[-150px] bottom-[-150px] left-0 hidden w-[1px] bg-gradient-to-b from-transparent via-purple-500 to-transparent md:block" />

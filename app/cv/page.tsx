@@ -1,113 +1,59 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Calendar, Mail, MapPin, X } from 'lucide-react';
-import Image from 'next/image';
-import { useEffect } from 'react';
-import { CornerAccent, GridPattern, SectionHeading, SectionLabel, SharpAccent } from './styling';
-import { analytics } from "@/utils/analytics-instance";
+import { Calendar, Mail, MapPin } from 'lucide-react';
+import {
+  CornerAccent,
+  GridPattern,
+  SectionHeading,
+  SectionLabel,
+  SharpAccent,
+} from '@/components/styling';
 
-interface CVProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+const education = {
+  degree: 'Bachelor of Economics',
+  university: 'Krivoy Rog National University',
+  period: '2007 - 2012',
+};
 
-export const CV = ({ isOpen, onClose }: CVProps) => {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      analytics.track('CV opened');
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
+const skills = [
+  { name: 'JavaScript', level: 95 },
+  { name: 'React & Next.js', level: 95 },
+  { name: 'TypeScript', level: 90 },
+  { name: 'CSS', level: 90 },
+  { name: 'GraphQL', level: 85 },
+  { name: 'Node.js & Nest.js', level: 85 },
+  { name: 'Vue.js', level: 75 },
+];
 
-  if (!isOpen) return null;
+const workExperience = [
+  {
+    period: '2021 - present',
+    position: 'Senior Software Engineer',
+    company: 'Vention',
+    description:
+      'Led development of complex web applications using React, Next.js, and TypeScript. Architected scalable solutions, mentored junior developers, and optimized performance across multiple projects.',
+  },
+  {
+    period: '2019 - 2021',
+    position: 'Middle Software Engineer',
+    company: 'INDUSTRIALAX',
+    description:
+      'Developed responsive web applications, implemented modern UI/UX patterns, collaborated with cross-functional teams to deliver high-quality products on time.',
+  },
+  {
+    period: '2017 - 2019',
+    position: 'Junior Software Engineer',
+    company: 'STForex',
+    description:
+      'Built interactive web interfaces, maintained codebase quality, participated in code reviews, and rapidly expanded technical expertise in modern frontend technologies.',
+  },
+];
 
-  const workExperience = [
-    {
-      period: '2021 - present',
-      position: 'Senior Software Engineer',
-      company: 'Vention',
-      description:
-        'Led development of complex web applications using React, Next.js, and TypeScript. Architected scalable solutions, mentored junior developers, and optimized performance across multiple projects.',
-    },
-    {
-      period: '2019 - 2021',
-      position: 'Middle Software Engineer',
-      company: 'INDUSTRIALAX',
-      description:
-        'Developed responsive web applications, implemented modern UI/UX patterns, collaborated with cross-functional teams to deliver high-quality products on time.',
-    },
-    {
-      period: '2017 - 2019',
-      position: 'Junior Software Engineer',
-      company: 'STForex',
-      description:
-        'Built interactive web interfaces, maintained codebase quality, participated in code reviews, and rapidly expanded technical expertise in modern frontend technologies.',
-    },
-  ];
-
-  const education = {
-    degree: 'Bachelor of Economics',
-    university: 'Krivoy Rog National University',
-    period: '2007 - 2012',
-  };
-
-  const skills = [
-    { name: 'JavaScript', level: 95 },
-    { name: 'React & Next.js', level: 95 },
-    { name: 'TypeScript', level: 90 },
-    { name: 'CSS', level: 90 },
-    { name: 'GraphQL', level: 85 },
-    { name: 'Node.js & Nest.js', level: 85 },
-    { name: 'Vue.js', level: 75 },
-  ];
-
-  const companies = [
-    {
-      name: 'iTechArt',
-      url: 'https://itechartgroup.by/',
-      logo: '/images/85e599c989c466bac62d32cb8e1d5831ff4a2cc0.png',
-    },
-    {
-      name: 'Elemy',
-      url: 'https://care.elemy.com/peds_b/',
-      logo: '/images/8c88f966c88723e1fb4098ca5f9a50a2019e82ff.png',
-    },
-    {
-      name: 'Coverwallet',
-      url: 'https://www.coverwallet.com/',
-      logo: '/images/2451566175a740f38ecee00e8b5679d1687ac669.png',
-    },
-    {
-      name: 'Keeps',
-      url: 'https://www.keeps.com/',
-      logo: '/images/a3389506a9c698eb3b4873165166cc863799daa8.png',
-    },
-    {
-      name: 'Popsa',
-      url: 'https://popsa.com/en-us/',
-      logo: '/images/d33116a7f1973f42129f2fd150e1189098b7586f.png',
-    },
-  ];
-
+export default function Page() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] overflow-y-auto"
-    >
-      <div className="fixed inset-0 bg-black/95 backdrop-blur-sm" onClick={onClose} />
-      <button
-        onClick={onClose}
-        className="group fixed top-4 right-4 z-[110] h-10 w-10 border-2 border-purple-500/50 bg-black transition-all duration-300 hover:border-purple-500 hover:bg-purple-500/20 md:top-8 md:right-8 md:h-12 md:w-12"
-      >
-        <X className="mx-auto h-5 w-5 text-purple-500 transition-colors group-hover:text-white md:h-6 md:w-6" />
-      </button>
-      <div className="relative z-[105] min-h-screen px-4 py-16 md:px-6 md:py-24">
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+      <div className="relative min-h-screen px-4 py-16 md:px-6 md:py-32">
         <GridPattern />
         <SharpAccent position="top-left" className="bg-purple-600/10" />
         <div className="relative z-10 mx-auto max-w-6xl">
@@ -131,7 +77,7 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
                 </p>
               </div>
 
-              <div className="w-[350px] ml-auto relative self-start border-2 border-purple-500/30 bg-black p-4 md:p-6">
+              <div className="relative ml-auto w-[350px] self-start border-2 border-purple-500/30 bg-black p-4 md:p-6">
                 <CornerAccent position="top-right" size="md" showOn="always" />
                 <CornerAccent position="bottom-left" size="md" color="fuchsia" showOn="always" />
 
@@ -152,7 +98,7 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
                   </div>
                   <div className="flex items-start gap-2 md:gap-3">
                     <MapPin className="mt-1 flex-shrink-0 text-purple-500" size={16} />
-                    <span className="text-sm text-zinc-400 md:text-base">Remote / Worldwide</span>
+                    <span className="text-sm text-zinc-400 md:text-base">Sofia, Bulgaria</span>
                   </div>
                 </div>
               </div>
@@ -266,4 +212,4 @@ export const CV = ({ isOpen, onClose }: CVProps) => {
       </div>
     </motion.div>
   );
-};
+}

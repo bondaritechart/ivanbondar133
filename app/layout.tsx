@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { AnalyticsProvider } from "@/components/AnalyticsProvider";
+import { AnalyticsProvider } from '@/components/AnalyticsProvider';
+import { Navigation } from '@/components/Navigation';
 
 export const metadata: Metadata = {
   title: 'Ivan Bondar - Full-Stack Developer',
@@ -15,13 +16,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <head>
-      <title>Ivan Bondar - Full-Stack Developer</title>
-      <link rel="icon" href="/favicon.png" sizes="any" />
-    </head>
+      <head>
+        <title>Ivan Bondar - Full-Stack Developer</title>
+        <link rel="icon" href="/favicon.png" sizes="any" />
+      </head>
       <body>
-        <AnalyticsProvider />
-        {children}
+        <div className="min-h-screen">
+          <Navigation />
+          <AnalyticsProvider />
+          {children}
+        </div>
       </body>
     </html>
   );
