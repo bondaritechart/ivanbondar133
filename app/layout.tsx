@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { AnalyticsProvider } from '@/components/AnalyticsProvider';
-import { Navigation } from '@/components/Navigation';
+import { Navigation } from '@/components/navigation';
+import { AnalyticsProvider } from '@/components/providers/analytics-provider';
 
 export const metadata: Metadata = {
   title: 'Ivan Bondar - Full-Stack Developer',

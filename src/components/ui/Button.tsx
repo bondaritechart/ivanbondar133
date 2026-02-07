@@ -5,14 +5,14 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ComponentRef, Forwarde
 import { cn } from '@/utils/tailwind';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 border-2 border-purple-500 text-sm tracking-widest uppercase transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 md:text-base',
+  'border-primary inline-flex items-center justify-center gap-2 border-2 text-sm font-semibold tracking-widest uppercase transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 md:text-base',
   {
     variants: {
       variant: {
-        solid: 'bg-purple-600 text-white hover:bg-purple-500',
-        outline: 'bg-stone-950 text-purple-400 hover:bg-purple-500 hover:text-white',
-        ghost: 'border-transparent text-white hover:bg-purple-500/20',
-        subtle: 'border-purple-500/50 text-zinc-400 hover:border-purple-500 hover:text-white',
+        solid: 'hover:bg-primary bg-purple-600 text-white',
+        outline: 'hover:bg-primary bg-stone-950 text-purple-400 hover:text-white',
+        ghost: 'hover:bg-primary/20 border-transparent text-white',
+        subtle: 'border-primary/50 hover:border-primary text-zinc-400 hover:text-white',
         text: 'text-muted hover:text-muted-active border-0',
       },
       size: {

@@ -2,10 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { Blocks, Zap, Layers, ShieldCheck, Rocket, Users } from 'lucide-react';
+import { PageSection, SECTION_CONTAINER_STYLES } from '@/components/page-section';
 import { Container } from '@/components/ui/Container';
 import { Pill } from '@/components/ui/Pill';
-import { GridPattern, CornerAccent, SectionLabel, SharpAccent } from './styling';
-import { Button, Typography } from './ui';
+import { ValuePropCard } from '@/components/ui/value-prop-card';
+import { CornerAccent, SectionLabel, SharpAccent } from '../styling';
+import { Button, Typography } from '../ui';
 
 const skills = [
   {
@@ -62,17 +64,13 @@ const skills = [
 ];
 
 export const Skills = () => (
-  <section
-    id="skills"
-    className="border-primary/30 relative overflow-hidden border-t py-16 md:py-24"
-  >
-    <GridPattern />
+  <PageSection id="skills">
     <SharpAccent
       position="top-right"
       className="hidden h-[400px] w-[400px] bg-purple-600/10 md:block"
     />
 
-    <Container className="relative z-10 space-y-4 md:space-y-12">
+    <Container className={SECTION_CONTAINER_STYLES}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +97,7 @@ export const Skills = () => (
             viewport={{ once: true }}
             className="group relative"
           >
-            <div className="border-primary/30 hover:border-primary relative flex h-full flex-col border-2 p-4 transition-all duration-300 md:min-h-50 md:p-6">
+            <ValuePropCard className="md:min-h-50">
               <CornerAccent position="top-left" size="md" />
               <CornerAccent position="bottom-right" size="md" color="accent" />
               <div className="relative flex h-full flex-col gap-4">
@@ -116,13 +114,13 @@ export const Skills = () => (
                   <Typography variant="label">{skill.result}</Typography>
                 </div>
               </div>
-            </div>
+            </ValuePropCard>
           </motion.div>
         ))}
       </div>
       <div className="text-center">
-        <Button>Discover more</Button>
+        <Button variant="outline">Discover more</Button>
       </div>
     </Container>
-  </section>
+  </PageSection>
 );

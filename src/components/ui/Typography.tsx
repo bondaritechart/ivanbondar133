@@ -5,8 +5,8 @@ import { cn } from '@/utils/tailwind';
 const typographyVariants = cva('', {
   variants: {
     variant: {
-      h1: 'text-8xl leading-none font-bold tracking-[1px] uppercase',
-      h2: 'text-6xl font-bold tracking-[1px] uppercase',
+      h1: 'text-6xl leading-none font-bold tracking-[1px] uppercase lg:text-8xl',
+      h2: 'text-4xl font-bold tracking-[1px] uppercase lg:text-6xl',
       h3: 'text-4l font-semibold uppercase',
       h4: 'text-2xl font-semibold uppercase',
       h5: 'text-lg font-semibold tracking-[0.5px] uppercase',

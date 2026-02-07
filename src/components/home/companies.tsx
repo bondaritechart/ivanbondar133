@@ -1,9 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { PageSection, SECTION_CONTAINER_STYLES } from '@/components/page-section';
+import { Typography } from '@/components/ui';
 import { Container } from '@/components/ui/Container';
-import { CompanyCard } from './CompanyCard';
-import { GridPattern, SectionLabel } from './styling';
+import { SectionLabel } from '../styling';
+import { CompanyCard } from './company-card';
 
 const companies = [
   {
@@ -44,26 +46,29 @@ const companies = [
 ];
 
 export const Companies = () => (
-  <section
-    id="companies"
-    className="relative overflow-hidden border-t border-purple-500/30 py-16 md:py-24"
-  >
-    <GridPattern />
-    <Container className="relative z-10">
+  <PageSection id="companies">
+    <Container className={SECTION_CONTAINER_STYLES}>
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
+        className="space-y-4"
       >
-        <SectionLabel>Companies</SectionLabel>
+        <SectionLabel>companies</SectionLabel>
+        <Typography variant="h2" as="h2">
+          Trusted by teams
+        </Typography>
+        <Typography variant="description" className="max-w-2xl">
+          Real companies. Real products. Real users.
+        </Typography>
       </motion.div>
+
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-5">
         {companies.map((company, index) => (
           <CompanyCard key={company.name} {...company} index={index} />
         ))}
       </div>
-      <div className="text-center" />
     </Container>
-  </section>
+  </PageSection>
 );
