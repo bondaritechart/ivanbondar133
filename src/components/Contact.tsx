@@ -228,7 +228,7 @@ export const Contact = () => {
                 <div className="absolute inset-0 border-2 border-purple-500/30 bg-black transition-all duration-300 group-hover:border-purple-500" />
                 <CornerAccent position="top-right" size="xs" />
                 <link.icon
-                  className="relative text-purple-500 transition-colors duration-300 group-hover:text-white"
+                  className="text-brand-primary relative transition-colors duration-300 group-hover:text-white"
                   size={20}
                 />
               </a>

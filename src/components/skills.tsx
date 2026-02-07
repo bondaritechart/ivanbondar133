@@ -96,9 +96,9 @@ export const Skills = () => (
             <div className="relative flex flex-col border-2 border-purple-500/30 p-6 transition-all duration-300 hover:border-purple-500 md:min-h-[200px] md:p-8">
               <CornerAccent position="top-left" size="md" />
               <CornerAccent position="bottom-right" size="md" color="fuchsia" />
-              <div className="hidden md:block mb-4 md:mb-6">
+              <div className="mb-4 hidden md:mb-6 md:block">
                 <skill.icon
-                  className="text-purple-500 transition-colors duration-300 group-hover:text-white"
+                  className="text-brand-primary transition-colors duration-300 group-hover:text-white"
                   size={28}
                 />
               </div>

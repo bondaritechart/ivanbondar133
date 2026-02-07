@@ -39,7 +39,7 @@ export const Hero = () => (
           className="mb-6 px-4 text-4xl leading-none sm:text-6xl md:mb-8 md:text-8xl lg:text-9xl"
         >
           WELCOME TO THE <br />
-          <span className="text-purple-500">DIGITAL</span> WORLD
+          <span className="text-brand-primary">DIGITAL</span> WORLD
         </motion.h1>
 
         <motion.p
@@ -48,8 +48,8 @@ export const Hero = () => (
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mx-auto max-w-3xl px-4 pb-4 text-sm leading-relaxed tracking-wider text-zinc-400 uppercase md:text-lg lg:text-xl"
         >
-          Full-Stack Developer with rich experience in building innovative web applications.
-          Combining creativity with technical expertise to deliver cutting-edge solutions.
+          Full-stack developer with 7+ years of experience, building high-load web apps for fintech,
+          healthcare and e-commerce.
         </motion.p>
       </div>
 

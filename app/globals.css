@@ -5,8 +5,8 @@
   --color-brand-primary: var(--color-purple-500);
   --body-bg: var(--color-stone-950);
   --body-text: var(--color-zinc-50);
-  --color-muted: var(--color-zinc-400);
-  --color-muted-active: var(--color-white);
+  --color-muted: var(--color-zinc-500);
+  --color-muted-active: var(--color-zinc-50);
 }
 
 @layer base {
