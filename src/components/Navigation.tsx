@@ -60,9 +60,9 @@ export const Navigation = () => {
             className="flex h-10 w-10 items-center justify-center border-2 border-purple-500/50 transition-colors hover:border-purple-500 md:hidden"
           >
             {isMobileMenuOpen ? (
-              <X className="text-brand-primary h-5 w-5" />
+              <X className="text-primary h-5 w-5" />
             ) : (
-              <Menu className="text-brand-primary h-5 w-5" />
+              <Menu className="text-primary h-5 w-5" />
             )}
           </button>
         </div>

@@ -2,7 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { Code2, Palette, Database, Zap } from 'lucide-react';
+import { Container } from '@/components/ui/Container';
 import { GridPattern, CornerAccent, SectionLabel, SharpAccent } from './styling';
+import { Typography } from './ui';
 
 interface Skill {
   id: number;
@@ -15,7 +17,7 @@ interface Skill {
 const skills: Skill[] = [
   {
     id: 1,
-    name: 'REACT & NEXT.JS',
+    name: 'Scalable Frontend Architecture',
     category: 'FRONTEND DEVELOPMENT',
     experience: '5+ years',
     icon: Code2,
@@ -59,8 +61,8 @@ const skills: Skill[] = [
 
 export const Skills = () => (
   <section
-    id="work"
-    className="relative overflow-hidden border-t border-purple-500/30 px-4 py-16 md:px-6 md:py-32"
+    id="skills"
+    className="border-primary/30 relative overflow-hidden border-t py-16 md:py-32"
   >
     <GridPattern />
     <SharpAccent
@@ -68,19 +70,21 @@ export const Skills = () => (
       className="hidden h-[400px] w-[400px] bg-purple-600/10 md:block"
     />
 
-    <div className="relative z-10 mx-auto max-w-7xl">
+    <Container className="relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="mb-12 md:mb-20"
+        className="space-y-4"
       >
-        <SectionLabel className="mb-6">Expertise</SectionLabel>
-        <h2 className="mb-4 text-3xl md:mb-6 md:text-5xl lg:text-7xl">Technical Skills</h2>
-        <p className="max-w-2xl text-sm tracking-wider text-zinc-500 uppercase md:text-lg">
-          Core technologies and tools mastered through years of production experience
-        </p>
+        <SectionLabel>Expertise</SectionLabel>
+        <Typography variant="h2" as="h2">
+          Technical Skills
+        </Typography>
+        <Typography variant="description" className="max-w-2xl">
+          Tools change. Engineering principles stay.
+        </Typography>
       </motion.div>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
@@ -93,32 +97,30 @@ export const Skills = () => (
             viewport={{ once: true }}
             className="group relative"
           >
-            <div className="relative flex flex-col border-2 border-purple-500/30 p-6 transition-all duration-300 hover:border-purple-500 md:min-h-[200px] md:p-8">
+            <div className="border-primary/30 hover:border-primary relative flex flex-col border-2 p-6 transition-all duration-300 md:min-h-[200px] md:p-8">
               <CornerAccent position="top-left" size="md" />
-              <CornerAccent position="bottom-right" size="md" color="fuchsia" />
+              <CornerAccent position="bottom-right" size="md" color="accent" />
               <div className="mb-4 hidden md:mb-6 md:block">
                 <skill.icon
-                  className="text-brand-primary transition-colors duration-300 group-hover:text-white"
+                  className="text-primary transition-colors duration-300 group-hover:text-white"
                   size={28}
                 />
               </div>
               <div className="mb-3 flex items-center gap-3 md:mb-4">
-                <div className="h-[1px] w-6 bg-purple-500 md:w-8" />
-                <span className="text-[10px] tracking-[0.2em] text-purple-400 uppercase md:text-xs">
-                  {skill.category}
-                </span>
+                <div className="bg-primary h-[1px] w-6 md:w-8" />
+                <Typography variant="caption">{skill.category}</Typography>
               </div>
 
-              <h3 className="mb-3 text-xl transition-colors duration-300 group-hover:text-purple-400 md:mb-4 md:text-2xl">
+              <h3 className="group-hover:text-primary-active mb-3 text-xl transition-colors duration-300 md:mb-4 md:text-2xl">
                 {skill.name}
               </h3>
 
               <div className="mt-auto">
                 <div className="flex items-center gap-2">
-                  <div className="h-[2px] w-full bg-purple-500/20">
-                    <div className="h-full w-4/5 bg-purple-500" />
+                  <div className="bg-primary/20 h-[2px] w-full">
+                    <div className="bg-primary h-full w-4/5" />
                   </div>
-                  <span className="text-xs tracking-wider whitespace-nowrap text-zinc-500 uppercase md:text-sm">
+                  <span className="text-muted text-xs tracking-wider whitespace-nowrap uppercase md:text-sm">
                     {skill.experience}
                   </span>
                 </div>
@@ -127,6 +129,6 @@ export const Skills = () => (
           </motion.div>
         ))}
       </div>
-    </div>
+    </Container>
   </section>
 );

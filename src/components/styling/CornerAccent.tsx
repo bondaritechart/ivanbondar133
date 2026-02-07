@@ -1,6 +1,6 @@
 type Position = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 type Size = 'xs' | 'sm' | 'md';
-type Color = 'purple' | 'fuchsia';
+type Color = 'primary' | 'accent';
 type ShowOn = 'always' | 'hover' | 'focus';
 
 interface CornerAccentProps {
@@ -25,8 +25,8 @@ const sizeClasses: Record<Size, string> = {
 };
 
 const colorClasses: Record<Color, string> = {
-  purple: 'bg-purple-500',
-  fuchsia: 'bg-fuchsia-500',
+  primary: 'bg-primary',
+  accent: 'bg-accent',
 };
 
 const showOnClasses: Record<ShowOn, string> = {
@@ -38,7 +38,7 @@ const showOnClasses: Record<ShowOn, string> = {
 export const CornerAccent = ({
   position,
   size = 'sm',
-  color = 'purple',
+  color = 'primary',
   showOn = 'hover',
   className = '',
 }: CornerAccentProps) => (

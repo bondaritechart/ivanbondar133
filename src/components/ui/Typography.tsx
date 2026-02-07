@@ -5,14 +5,15 @@ import { cn } from '@/utils/tailwind';
 const typographyVariants = cva('', {
   variants: {
     variant: {
-      h1: 'text-3xl font-bold text-slate-900',
-      h2: 'text-2xl font-bold text-slate-900',
-      h3: 'text-xl font-semibold text-slate-900',
-      h4: 'text-lg font-semibold text-slate-900',
-      body: 'text-sm text-slate-900',
-      description: 'text-sm text-slate-500',
+      h1: 'text-8xl leading-none font-bold tracking-[1px] uppercase',
+      h2: 'text-6xl font-bold tracking-[1px] uppercase',
+      h3: 'text-4l font-semibold uppercase',
+      h4: 'text-2xl font-semibold uppercase',
+      body: 'lg:text-md text-sm leading-normal tracking-[1px]',
+      description: 'text-muted text-sm leading-relaxed uppercase md:tracking-[0.1em] lg:text-lg',
       label: 'text-sm font-medium text-slate-700',
-      caption: 'text-xs text-slate-500',
+      caption:
+        'text-primary-active text-xs tracking-[0.2em] uppercase md:text-sm md:tracking-[0.3em]',
     },
   },
   defaultVariants: {

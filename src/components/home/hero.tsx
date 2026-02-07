@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Typography } from '@/components/ui';
 import { GridPattern, CornerAccent, SharpAccent } from '../styling';
 
 export const Hero = () => (
@@ -12,45 +13,45 @@ export const Hero = () => (
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
-      className="relative z-10 mx-auto max-w-6xl text-center"
+      className="relative z-10 mx-auto max-w-6xl space-y-8 text-center md:space-y-14"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative mb-6 inline-block border-2 border-purple-500 px-4 py-2 md:mb-8 md:px-6"
+        className="border-primary relative inline-block border-2 px-4 py-2 md:px-6"
       >
         <CornerAccent position="top-right" showOn="always" />
-        <CornerAccent position="bottom-left" color="fuchsia" showOn="always" />
-        <span className="text-xs tracking-[0.2em] text-purple-400 uppercase md:text-sm md:tracking-[0.3em]">
-          Full-Stack Developer
-        </span>
+        <CornerAccent position="bottom-left" color="accent" showOn="always" />
+        <Typography variant="caption">Full-Stack Developer</Typography>
       </motion.div>
 
-      <div className="relative mb-10 p-4">
-        <div className="absolute top-0 right-[-200px] left-[-200px] hidden h-[1px] bg-gradient-to-r from-transparent via-purple-500 to-transparent md:block" />
-        <div className="absolute right-[-200px] bottom-0 left-[-200px] hidden h-[1px] bg-gradient-to-r from-transparent via-fuchsia-500 to-transparent md:block" />
-        <div className="absolute top-[-150px] bottom-[-150px] left-0 hidden w-[1px] bg-gradient-to-b from-transparent via-purple-500 to-transparent md:block" />
-        <div className="absolute top-[-150px] right-0 bottom-[-150px] hidden w-[1px] bg-gradient-to-b from-transparent via-fuchsia-500 to-transparent md:block" />
-        <motion.h1
+      <div className="relative p-10">
+        <div className="via-primary absolute top-0 right-[-200px] left-[-200px] hidden h-[1px] bg-gradient-to-r from-transparent to-transparent md:block" />
+        <div className="via-accent absolute right-[-200px] bottom-0 left-[-200px] hidden h-[1px] bg-gradient-to-r from-transparent to-transparent md:block" />
+        <div className="via-primary absolute top-[-150px] bottom-[-150px] left-0 hidden w-[1px] bg-gradient-to-b from-transparent to-transparent md:block" />
+        <div className="via-accent absolute top-[-150px] right-0 bottom-[-150px] hidden w-[1px] bg-gradient-to-b from-transparent to-transparent md:block" />
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-6 px-4 text-4xl leading-none sm:text-6xl md:mb-8 md:text-8xl lg:text-9xl"
         >
-          WELCOME TO THE <br />
-          <span className="text-brand-primary">DIGITAL</span> WORLD
-        </motion.h1>
+          <Typography variant="h1" as="h1">
+            I build web apps that <span className="text-primary">grow businesses</span>
+          </Typography>
+        </motion.div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mx-auto max-w-3xl px-4 pb-4 text-sm leading-relaxed tracking-wider text-zinc-400 uppercase md:text-lg lg:text-xl"
+          className="mx-auto mt-12 max-w-3xl"
         >
-          Full-stack developer with 7+ years of experience, building high-load web apps for fintech,
-          healthcare and e-commerce.
-        </motion.p>
+          <Typography variant="description">
+            Full-stack developer with 7+ years of experience, building high-load web apps for
+            fintech, healthcare and e-commerce.
+          </Typography>
+        </motion.div>
       </div>
 
       <motion.div
@@ -64,7 +65,7 @@ export const Hero = () => (
           className="group relative w-full overflow-hidden border-2 border-purple-500 bg-purple-600 px-8 py-3 text-center transition-all duration-300 hover:bg-purple-500 sm:w-auto md:px-10 md:py-4"
         >
           <span className="relative text-sm tracking-widest text-white uppercase md:text-base">
-            Ask a question
+            Discuss your project
           </span>
         </a>
 
@@ -72,7 +73,7 @@ export const Hero = () => (
           href="#work"
           className="group relative w-full border-2 border-purple-500 bg-stone-950 px-8 py-3 text-center text-sm tracking-widest text-purple-400 uppercase transition-all duration-300 hover:bg-purple-500 hover:text-white sm:w-auto md:px-10 md:py-4 md:text-base"
         >
-          Skills
+          View examples
         </a>
       </motion.div>
     </motion.div>

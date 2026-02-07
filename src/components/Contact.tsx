@@ -110,7 +110,7 @@ export const Contact = () => {
                 <CornerAccent
                   position="top-right"
                   size="xs"
-                  color="fuchsia"
+                  color="accent"
                   showOn="focus"
                   className="h-3 w-3"
                 />
@@ -129,7 +129,7 @@ export const Contact = () => {
                 <CornerAccent
                   position="bottom-right"
                   size="xs"
-                  color="fuchsia"
+                  color="accent"
                   showOn="focus"
                   className="h-3 w-3"
                 />
@@ -228,7 +228,7 @@ export const Contact = () => {
                 <div className="absolute inset-0 border-2 border-purple-500/30 bg-black transition-all duration-300 group-hover:border-purple-500" />
                 <CornerAccent position="top-right" size="xs" />
                 <link.icon
-                  className="text-brand-primary relative transition-colors duration-300 group-hover:text-white"
+                  className="text-primary relative transition-colors duration-300 group-hover:text-white"
                   size={20}
                 />
               </a>
