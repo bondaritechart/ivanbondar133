@@ -5,15 +5,16 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ComponentRef, Forwarde
 import { cn } from '@/utils/tailwind';
 
 const buttonVariants = cva(
-  'border-primary inline-flex items-center justify-center gap-2 border-2 text-sm font-semibold tracking-widest uppercase transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 md:text-base',
+  'border-primary inline-flex items-center justify-center gap-2 border-2 text-sm tracking-widest uppercase transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 md:text-base',
   {
     variants: {
       variant: {
         solid: 'hover:bg-primary bg-purple-600 text-white',
         outline: 'hover:bg-primary bg-stone-950 text-purple-400 hover:text-white',
         ghost: 'hover:bg-primary/20 border-transparent text-white',
-        subtle: 'border-primary/50 hover:border-primary text-zinc-400 hover:text-white',
         text: 'text-muted hover:text-muted-active border-0',
+        animated:
+          'group relative overflow-hidden border-purple-500 px-6 py-2.5 text-sm font-normal tracking-wider text-white md:text-sm',
       },
       size: {
         sm: 'px-6 py-2.5',
@@ -49,8 +50,16 @@ type ButtonAsLink = ButtonVariantProps &
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 export const Button = forwardRef<ComponentRef<'button'> | ComponentRef<'a'>, ButtonProps>(
-  ({ variant, size, fullWidth, className, ...props }, ref) => {
-    const classes = cn(buttonVariants({ variant, size, fullWidth }), className);
+  ({ variant, size, fullWidth, className, children, ...props }, ref) => {
+    const isAnimated = variant === 'animated';
+    const classes = cn(
+      buttonVariants({
+        variant,
+        size: isAnimated ? (null as unknown as ButtonVariantProps['size']) : size,
+        fullWidth,
+      }),
+      className
+    );
 
     if ('href' in props && props.href !== undefined) {
       const { href, ...linkProps } = props as ButtonAsLink;
@@ -61,7 +70,19 @@ export const Button = forwardRef<ComponentRef<'button'> | ComponentRef<'a'>, But
           href={href}
           className={classes}
           {...linkProps}
-        />
+        >
+          {isAnimated ? (
+            <>
+              <div
+                aria-hidden
+                className="bg-primary absolute inset-0 translate-y-full transition-transform duration-300 group-hover:translate-y-0"
+              />
+              <span className="relative">{children}</span>
+            </>
+          ) : (
+            children
+          )}
+        </Link>
       );
     }
 
@@ -70,7 +91,19 @@ export const Button = forwardRef<ComponentRef<'button'> | ComponentRef<'a'>, But
         ref={ref as ForwardedRef<HTMLButtonElement>}
         className={classes}
         {...(props as ButtonAsButton)}
-      />
+      >
+        {isAnimated ? (
+          <>
+            <div
+              aria-hidden
+              className="bg-primary absolute inset-0 translate-y-full transition-transform duration-300 group-hover:translate-y-0"
+            />
+            <span className="relative">{children}</span>
+          </>
+        ) : (
+          children
+        )}
+      </button>
     );
   }
 );

@@ -16,7 +16,7 @@ const reasons = [
   },
   {
     id: 2,
-    title: 'Battle-tested production experience',
+    title: 'Battle-tested production career',
     description:
       'I’ve built and maintained healthcare and fintech products used by thousands of real users in production.',
     icon: Zap,

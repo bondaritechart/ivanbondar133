@@ -5,6 +5,18 @@ import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui';
+import { Routes } from '@/constants/routes';
+
+const links = [
+  {
+    label: 'Career',
+    href: Routes.CAREER,
+  },
+  {
+    label: 'Partners',
+    href: Routes.COMPANIES,
+  },
+];
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +41,7 @@ export const Navigation = () => {
       <div className="mx-auto max-w-7xl px-6 py-6">
         <div className="flex items-center justify-between">
           <motion.a
-            href="/"
+            href={Routes.HOME}
             className="group relative"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
@@ -43,28 +55,22 @@ export const Navigation = () => {
             />
           </motion.a>
           <div className="hidden items-center md:flex">
-            <Button className="md:text-sm" variant="text" size="sm" href="/cv">
-              CV
-            </Button>
-            <button className="group relative overflow-hidden border-2 border-purple-500 px-6 py-2.5">
-              <div className="absolute inset-0 translate-y-full bg-purple-500 transition-transform duration-300 group-hover:translate-y-0" />
-              <span className="relative text-sm tracking-wider text-white uppercase">
-                Get in Touch
-              </span>
-            </button>
+            {links.map((link) => (
+              <Button key={link.href} variant="text" size="sm" href={link.href}>
+                {link.label}
+              </Button>
+            ))}
+            <Button variant="animated">Get in Touch</Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
+          <Button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="flex h-10 w-10 items-center justify-center border-2 border-purple-500/50 transition-colors hover:border-purple-500 md:hidden"
+            variant="ghost"
+            className="md:hidden"
           >
-            {isMobileMenuOpen ? (
-              <X className="text-primary h-5 w-5" />
-            ) : (
-              <Menu className="text-primary h-5 w-5" />
-            )}
-          </button>
+            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
         </div>
       </div>
 
@@ -72,19 +78,42 @@ export const Navigation = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-b border-purple-500/30 bg-black/95 backdrop-blur-xl md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] h-screen w-screen bg-black/95 backdrop-blur-xl md:hidden"
           >
-            <div className="flex flex-col gap-4 px-6 py-6">
-              <Button variant="text" size="sm" href="/cv">
-                CV
-              </Button>
-              <button className="mt-4 w-full border-2 border-purple-500 bg-purple-500 px-6 py-3 text-sm tracking-wider text-white uppercase transition-colors hover:bg-purple-600">
+            <Button
+              aria-label="Close menu"
+              onClick={() => setIsMobileMenuOpen(false)}
+              variant="ghost"
+              className="absolute top-6 right-6"
+            >
+              <X className="h-5 w-5" />
+            </Button>
+
+            <motion.div
+              initial={{ y: 12, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 12, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="flex h-full flex-col items-center justify-center gap-6 px-6"
+            >
+              {links.map((link) => (
+                <Button
+                  key={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  variant="text"
+                  size="sm"
+                  href={link.href}
+                >
+                  {link.label}
+                </Button>
+              ))}
+              <Button fullWidth className="max-w-xs" onClick={() => setIsMobileMenuOpen(false)}>
                 Get in Touch
-              </button>
-            </div>
+              </Button>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -5,5 +5,5 @@ export const Container = ({
   className,
 }: {
   children: React.ReactNode;
-  className: string;
-}) => <div className={cn('container mx-auto px-4', className)}>{children}</div>;
+  className?: string;
+}) => <div className={cn('container mx-auto max-w-7xl px-4', className)}>{children}</div>;

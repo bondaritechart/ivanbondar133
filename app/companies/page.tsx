@@ -3,8 +3,10 @@ import { Container } from '@/components/ui/Container';
 
 export default function Page() {
   return (
-    <PageSection>
-      <Container>asd</Container>
-    </PageSection>
+    <main className="py-10">
+      <PageSection className="border-0">
+        <Container>asd</Container>
+      </PageSection>
+    </main>
   );
 }

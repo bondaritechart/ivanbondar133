@@ -10,7 +10,7 @@ const typographyVariants = cva('', {
       h3: 'text-4l font-semibold uppercase',
       h4: 'text-2xl font-semibold uppercase',
       h5: 'text-lg font-semibold tracking-[0.5px] uppercase',
-      body: 'md:text-md text-sm leading-normal tracking-[1px]',
+      body: 'text-md leading-normal tracking-[1px] md:text-base',
       description: 'text-muted text-sm leading-relaxed uppercase md:tracking-[0.1em] lg:text-lg',
       label: 'text-label text-sm font-medium tracking-[1px]',
       caption:

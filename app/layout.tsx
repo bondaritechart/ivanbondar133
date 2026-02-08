@@ -6,7 +6,7 @@ import { AnalyticsProvider } from '@/components/providers/analytics-provider';
 export const metadata: Metadata = {
   title: 'Ivan Bondar - Full-Stack Developer',
   description:
-    'Full-Stack Developer with rich experience in building innovative web applications. Combining creativity with technical expertise to deliver cutting-edge solutions.',
+    'Full-Stack Developer with rich career in building innovative web applications. Combining creativity with technical expertise to deliver cutting-edge solutions.',
 };
 
 export default function RootLayout({

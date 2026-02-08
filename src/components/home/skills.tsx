@@ -93,7 +93,7 @@ export const Skills = () => (
             key={skill.id}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.5 }}
+            transition={{ duration: 0.8, delay: index * 0.15 }}
             viewport={{ once: true }}
             className="group relative"
           >
