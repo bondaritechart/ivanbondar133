@@ -13,7 +13,7 @@ export const Hero = () => (
     <motion.div
       {...FADE_UP}
       transition={{ duration: 1 }}
-      className="relative z-10 mx-auto max-w-6xl space-y-6 text-center md:space-y-14"
+      className="relative z-10 mx-auto max-w-6xl space-y-6 py-20 text-center md:space-y-14 lg:py-0"
     >
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}

@@ -38,7 +38,7 @@ export const Navigation = () => {
           : 'border-purple-500/0 bg-transparent'
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 py-6">
+      <div className="mx-auto max-w-7xl p-4 lg:p-6">
         <div className="flex items-center justify-between">
           <Link href={Routes.HOME} className="group relative">
             <Image

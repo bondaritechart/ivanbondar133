@@ -16,7 +16,7 @@ const items = [
   {
     title: 'Senior Frontend Engineer',
     company: 'Vention',
-    period: '2021 - Present',
+    period: '2021 - Now',
     year: '2021',
     responsibilities: [
       'Spearheaded frontend development for large-scale web applications utilizing React, Next.js, and TypeScript, resulting in robust and scalable solutions.',
