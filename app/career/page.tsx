@@ -4,11 +4,12 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { CalendarIcon, Cone } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { PageSection } from '@/components/page-section';
-import { SectionLabel } from '@/components/styling';
+import { SectionLabel, SharpAccent } from '@/components/styling';
 import { Divider, Typography } from '@/components/ui';
 import { Container } from '@/components/ui/Container';
 import { Pill } from '@/components/ui/Pill';
 import { ValuePropCard } from '@/components/ui/value-prop-card';
+import { cn } from '@/utils/tailwind';
 
 const items = [
   {
@@ -101,7 +102,7 @@ export default function Page() {
   }, [lineHeight]);
 
   return (
-    <main className="py-10">
+    <main className="relative py-10">
       <PageSection className="border-0">
         <Container className="relative z-10 space-y-6 lg:space-y-12">
           <motion.div
@@ -122,9 +123,9 @@ export default function Page() {
           </motion.div>
 
           <div ref={cardsRef} className="cards relative space-y-4 md:space-y-6 lg:space-y-8">
-            <div className="bg-primary/20 absolute top-0 left-[74px] h-full w-0.5 origin-top" />
+            <div className="bg-primary/20 absolute top-0 left-3 h-full w-0.5 origin-top lg:left-[74px]" />
             <motion.div
-              className="bg-accent absolute top-0 left-[74px] w-0.5 origin-top"
+              className="bg-accent absolute top-0 left-3 w-0.5 origin-top lg:left-[74px]"
               style={{ height: lineHeightSpring }}
             />
             {items.map((item, index) => (
@@ -137,21 +138,36 @@ export default function Page() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 key={item.company}
-                className="relative pl-50"
+                className="relative pl-10 lg:pl-50"
               >
                 <Pill
-                  className="absolute top-0 left-0 z-2 w-[150px]"
+                  className="absolute top-0 left-0 z-2 hidden w-[150px] lg:flex"
                   variant="square"
                   size="lg"
                   appearance={index <= activeIndex ? 'active' : 'default'}
                   icon={<CalendarIcon size={16} />}
                   label={item.period}
                 />
+                <div
+                  className={cn(
+                    'border-primary absolute top-0 left-[3px] h-5 w-5 rotate-45 transform border-2 transition-colors duration-300 lg:hidden',
+                    index <= activeIndex ? 'bg-primary' : ''
+                  )}
+                />
                 <ValuePropCard className="relative">
                   <div className="space-y-2">
-                    <Typography as="h4" variant="h4">
-                      {item.title}
-                    </Typography>
+                    <div className="flex items-center justify-between">
+                      <Typography as="h4" variant="h4">
+                        {item.title}
+                      </Typography>
+                      <Pill
+                        icon={<CalendarIcon size={16} />}
+                        variant="square"
+                        size="lg"
+                        label={item.period}
+                        className="text-nowrap lg:hidden"
+                      />
+                    </div>
                     <Typography variant="description">{item.company}</Typography>
                   </div>
                   <Divider />
@@ -172,6 +188,7 @@ export default function Page() {
           </div>
         </Container>
       </PageSection>
+      <SharpAccent position="bottom-left" color="fuchsia" />
     </main>
   );
 }

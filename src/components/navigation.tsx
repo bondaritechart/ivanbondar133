@@ -13,8 +13,8 @@ const links = [
     href: Routes.CAREER,
   },
   {
-    label: 'Partners',
-    href: Routes.COMPANIES,
+    label: 'Projects',
+    href: Routes.PROJECTS,
   },
 ];
 
