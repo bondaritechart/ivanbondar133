@@ -68,7 +68,14 @@ export const Companies = () => (
         ))}
       </div>
       <div className="text-center">
-        <Button href={Routes.CAREER} variant="outline">
+        <Button
+          trackingProps={{
+            element: 'link',
+            label: 'Discover more',
+          }}
+          href={Routes.CAREER}
+          variant="outline"
+        >
           Discover more
         </Button>
       </div>

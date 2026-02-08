@@ -122,7 +122,14 @@ export const Skills = () => (
         </AnimatePresence>
       </div>
       <div className="text-center">
-        <Button href={Routes.PROJECTS} variant="outline">
+        <Button
+          trackingProps={{
+            element: 'link',
+            label: 'See real projects',
+          }}
+          href={Routes.PROJECTS}
+          variant="outline"
+        >
           See real projects
         </Button>
       </div>
