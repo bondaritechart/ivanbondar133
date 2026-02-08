@@ -2,7 +2,9 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { CornerAccent } from './styling';
+import { Typography } from '@/components/ui';
+import { ValuePropCard } from '@/components/ui/value-prop-card';
+import { CornerAccent } from '../styling';
 
 interface CompanyCardProps {
   name: string;
@@ -22,9 +24,7 @@ export const CompanyCard = ({ name, logo, url, description, index }: CompanyCard
     target="_blank"
     rel="noopener noreferrer"
   >
-    <div className="group relative flex min-h-[220px] flex-col border-2 border-purple-500/30 p-5 transition-all duration-300 hover:border-purple-500 md:min-h-[280px]">
-      <CornerAccent position="top-left" />
-      <CornerAccent position="bottom-right" color="fuchsia" />
+    <ValuePropCard className="min-h-55 md:min-h-70">
       <div className="mb-4 flex flex-1 items-center justify-center md:mb-6">
         {logo ? (
           <div className="relative h-10 w-full md:h-12">
@@ -41,9 +41,9 @@ export const CompanyCard = ({ name, logo, url, description, index }: CompanyCard
           </span>
         )}
       </div>
-      <div className="flex-1 border-t border-purple-500/20 pt-3 md:pt-4">
-        <p className="text-sm leading-relaxed text-zinc-200">{description}</p>
+      <div className="border-primary/20 flex-1 border-t pt-3 md:pt-4">
+        <Typography variant="body">{description}</Typography>
       </div>
-    </div>
+    </ValuePropCard>
   </motion.a>
 );

@@ -5,14 +5,16 @@ import { cn } from '@/utils/tailwind';
 const typographyVariants = cva('', {
   variants: {
     variant: {
-      h1: 'text-3xl font-bold text-slate-900',
-      h2: 'text-2xl font-bold text-slate-900',
-      h3: 'text-xl font-semibold text-slate-900',
-      h4: 'text-lg font-semibold text-slate-900',
-      body: 'text-sm text-slate-900',
-      description: 'text-sm text-slate-500',
-      label: 'text-sm font-medium text-slate-700',
-      caption: 'text-xs text-slate-500',
+      h1: 'text-6xl leading-none font-bold tracking-[1px] uppercase lg:text-8xl',
+      h2: 'text-4xl font-bold tracking-[1px] uppercase lg:text-6xl',
+      h3: 'text-4l font-semibold uppercase',
+      h4: 'text-2xl font-semibold uppercase',
+      h5: 'text-lg font-semibold tracking-[0.5px] uppercase',
+      body: 'text-md leading-normal md:text-base',
+      description: 'text-muted text-sm leading-relaxed uppercase md:tracking-[0.1em] lg:text-lg',
+      label: 'text-label text-sm font-medium tracking-[1px]',
+      caption:
+        'text-primary-active text-xs tracking-[0.2em] uppercase md:text-sm md:tracking-[0.3em]',
     },
   },
   defaultVariants: {
@@ -22,7 +24,7 @@ const typographyVariants = cva('', {
 
 type TypographyVariantProps = VariantProps<typeof typographyVariants>;
 
-type TypographyElement = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span' | 'label';
+type TypographyElement = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'span' | 'label';
 
 const variantElementMap: Record<
   NonNullable<TypographyVariantProps['variant']>,
@@ -32,6 +34,7 @@ const variantElementMap: Record<
   h2: 'h2',
   h3: 'h3',
   h4: 'h4',
+  h5: 'h5',
   body: 'p',
   description: 'p',
   label: 'label',

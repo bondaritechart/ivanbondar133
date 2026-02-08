@@ -70,7 +70,7 @@ export default function Page() {
                 <h1 className="mb-4 text-4xl md:text-6xl lg:text-8xl">
                   IVAN
                   <br />
-                  <span className="text-brand-primary">BONDAR</span>
+                  <span className="text-primary">BONDAR</span>
                 </h1>
                 <p className="mb-6 text-lg tracking-wider text-zinc-400 uppercase md:mb-8 md:text-xl">
                   Senior Software Engineer
@@ -79,7 +79,7 @@ export default function Page() {
 
               <div className="relative ml-auto w-[350px] self-start border-2 border-purple-500/30 bg-black p-4 md:p-6">
                 <CornerAccent position="top-right" size="md" showOn="always" />
-                <CornerAccent position="bottom-left" size="md" color="fuchsia" showOn="always" />
+                <CornerAccent position="bottom-left" size="md" color="accent" showOn="always" />
 
                 <h3 className="mb-3 flex items-center gap-2 text-xs tracking-[0.2em] text-purple-400 uppercase md:mb-4 md:text-sm">
                   <div className="h-[1px] w-4 bg-purple-500 md:w-6" />
@@ -88,7 +88,7 @@ export default function Page() {
 
                 <div className="space-y-2 md:space-y-3">
                   <div className="flex items-start gap-2 md:gap-3">
-                    <Mail className="text-brand-primary mt-1 flex-shrink-0" size={16} />
+                    <Mail className="text-primary mt-1 flex-shrink-0" size={16} />
                     <a
                       href="mailto:ivanbondar133@gmail.com"
                       className="text-sm break-all text-zinc-400 transition-colors hover:text-white md:text-base"
@@ -97,7 +97,7 @@ export default function Page() {
                     </a>
                   </div>
                   <div className="flex items-start gap-2 md:gap-3">
-                    <MapPin className="text-brand-primary mt-1 flex-shrink-0" size={16} />
+                    <MapPin className="text-primary mt-1 flex-shrink-0" size={16} />
                     <span className="text-sm text-zinc-400 md:text-base">Sofia, Bulgaria</span>
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export default function Page() {
                   <div className="absolute top-0 -left-[9px] h-4 w-4 rotate-45 bg-purple-500" />
 
                   <div className="mb-2 flex items-center gap-3">
-                    <Calendar size={16} className="text-brand-primary" />
+                    <Calendar size={16} className="text-primary" />
                     <span className="text-sm tracking-wider text-purple-400 uppercase">
                       {job.period}
                     </span>
@@ -156,10 +156,10 @@ export default function Page() {
 
             <div className="group relative border-2 border-purple-500/30 bg-black p-6 transition-colors duration-300 hover:border-purple-500 md:p-8">
               <CornerAccent position="top-right" size="md" />
-              <CornerAccent position="bottom-left" size="md" color="fuchsia" />
+              <CornerAccent position="bottom-left" size="md" color="accent" />
 
               <div className="mb-3 flex items-center gap-2 md:mb-4 md:gap-3">
-                <Calendar size={16} className="text-brand-primary" />
+                <Calendar size={16} className="text-primary" />
                 <span className="text-xs tracking-wider text-purple-400 uppercase md:text-sm">
                   {education.period}
                 </span>

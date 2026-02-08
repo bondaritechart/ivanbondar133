@@ -1,8 +1,12 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CompanyCard } from './CompanyCard';
-import { GridPattern, SectionLabel } from './styling';
+import { PageSection, SECTION_CONTAINER_STYLES } from '@/components/page-section';
+import { Button, Typography } from '@/components/ui';
+import { Container } from '@/components/ui/Container';
+import { Routes } from '@/constants/routes';
+import { SectionLabel } from '../styling';
+import { CompanyCard } from './company-card';
 
 const companies = [
   {
@@ -16,22 +20,19 @@ const companies = [
     name: 'elemy',
     logo: '/images/8c88f966c88723e1fb4098ca5f9a50a2019e82ff.png',
     url: 'https://care.elemy.com/peds_b/',
-    description:
-      'Built healthcare platform interfaces, implemented real-time features, ensured HIPAA compliance',
+    description: 'Built healthcare platform interfaces, ensured HIPAA compliance',
   },
   {
     name: 'coverwallet',
     logo: '/images/2451566175a740f38ecee00e8b5679d1687ac669.png',
     url: 'https://www.coverwallet.com/',
-    description:
-      'Created insurance management dashboards, integrated payment systems, refined UX workflows',
+    description: 'Created insurance management dashboards, refined UX workflows',
   },
   {
     name: 'Keeps',
     logo: '/images/a3389506a9c698eb3b4873165166cc863799daa8.png',
     url: 'https://www.keeps.com/?srsltid=AfmBOoq44hUlcDidv_pg4tf3iAL6xrMjTu9Be_lYQZY59WAIwwDiD7Cj',
-    description:
-      'Crafted e-commerce experiences, optimized checkout flows, integrated subscription systems',
+    description: 'Crafted e-commerce experiences, optimized checkout flows',
   },
   {
     name: 'Popsa',
@@ -43,26 +44,41 @@ const companies = [
 ];
 
 export const Companies = () => (
-  <section
-    id="companies"
-    className="relative overflow-hidden border-t border-purple-500/30 px-4 py-16 md:px-6 md:py-32"
-  >
-    <GridPattern />
-    <div className="relative z-10 mx-auto max-w-7xl">
+  <PageSection id="companies">
+    <Container className={SECTION_CONTAINER_STYLES}>
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="mb-12 md:mb-16"
+        className="space-y-4"
       >
-        <SectionLabel>Career Path</SectionLabel>
+        <SectionLabel>companies</SectionLabel>
+        <Typography variant="h2" as="h2">
+          Trusted by teams
+        </Typography>
+        <Typography variant="description" className="max-w-2xl">
+          Real companies. Real products. Real users.
+        </Typography>
       </motion.div>
+
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-5">
         {companies.map((company, index) => (
           <CompanyCard key={company.name} {...company} index={index} />
         ))}
       </div>
-    </div>
-  </section>
+      <div className="text-center">
+        <Button
+          trackingProps={{
+            element: 'link',
+            label: 'Discover more',
+          }}
+          href={Routes.CAREER}
+          variant="outline"
+        >
+          Discover more
+        </Button>
+      </div>
+    </Container>
+  </PageSection>
 );

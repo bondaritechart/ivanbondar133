@@ -23,7 +23,7 @@ export const Footer = () => {
               href="https://dribbble.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-brand-primary text-sm tracking-wider text-zinc-600 uppercase transition-colors duration-300"
+              className="hover:text-primary text-sm tracking-wider text-zinc-600 uppercase transition-colors duration-300"
             >
               Dribbble
             </a>
@@ -31,7 +31,7 @@ export const Footer = () => {
               href="https://behance.net"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-brand-primary text-sm tracking-wider text-zinc-600 uppercase transition-colors duration-300"
+              className="hover:text-primary text-sm tracking-wider text-zinc-600 uppercase transition-colors duration-300"
             >
               Behance
             </a>
@@ -39,7 +39,7 @@ export const Footer = () => {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-brand-primary text-sm tracking-wider text-zinc-600 uppercase transition-colors duration-300"
+              className="hover:text-primary text-sm tracking-wider text-zinc-600 uppercase transition-colors duration-300"
             >
               LinkedIn
             </a>

@@ -2,18 +2,20 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import Link, { type LinkProps } from 'next/link';
 import { forwardRef } from 'react';
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ComponentRef, ForwardedRef } from 'react';
+import { analytics } from '@/utils/analytics-instance';
 import { cn } from '@/utils/tailwind';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 border-2 border-purple-500 text-sm tracking-widest uppercase transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 md:text-base',
+  'border-primary inline-flex items-center justify-center gap-2 border-2 text-sm tracking-widest uppercase transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 md:text-base',
   {
     variants: {
       variant: {
-        solid: 'bg-purple-600 text-white hover:bg-purple-500',
-        outline: 'bg-stone-950 text-purple-400 hover:bg-purple-500 hover:text-white',
-        ghost: 'border-transparent text-white hover:bg-purple-500/20',
-        subtle: 'border-purple-500/50 text-zinc-400 hover:border-purple-500 hover:text-white',
+        solid: 'hover:bg-primary bg-purple-600 text-white',
+        outline: 'hover:bg-primary bg-stone-950 text-purple-400 hover:text-white',
+        ghost: 'hover:bg-primary/20 border-transparent text-white',
         text: 'text-muted hover:text-muted-active border-0',
+        animated:
+          'group relative overflow-hidden border-purple-500 px-6 py-2.5 text-sm font-normal tracking-wider text-white md:text-sm',
       },
       size: {
         sm: 'px-6 py-2.5',
@@ -46,11 +48,23 @@ type ButtonAsLink = ButtonVariantProps &
     href: LinkProps['href'];
   };
 
-export type ButtonProps = ButtonAsButton | ButtonAsLink;
+export type ButtonProps = (ButtonAsButton | ButtonAsLink) & {
+  trackingProps?: Record<string, any> & {
+    element: string;
+  };
+};
 
 export const Button = forwardRef<ComponentRef<'button'> | ComponentRef<'a'>, ButtonProps>(
-  ({ variant, size, fullWidth, className, ...props }, ref) => {
-    const classes = cn(buttonVariants({ variant, size, fullWidth }), className);
+  ({ trackingProps, variant, size, fullWidth, className, children, ...props }, ref) => {
+    const isAnimated = variant === 'animated';
+    const classes = cn(
+      buttonVariants({
+        variant,
+        size: isAnimated ? (null as unknown as ButtonVariantProps['size']) : size,
+        fullWidth,
+      }),
+      className
+    );
 
     if ('href' in props && props.href !== undefined) {
       const { href, ...linkProps } = props as ButtonAsLink;
@@ -61,7 +75,25 @@ export const Button = forwardRef<ComponentRef<'button'> | ComponentRef<'a'>, But
           href={href}
           className={classes}
           {...linkProps}
-        />
+          onClick={(e) => {
+            if (trackingProps) {
+              analytics.trackClick(trackingProps.element, trackingProps);
+            }
+            props.onClick?.(e);
+          }}
+        >
+          {isAnimated ? (
+            <>
+              <div
+                aria-hidden
+                className="bg-primary absolute inset-0 translate-y-full transition-transform duration-300 group-hover:translate-y-0"
+              />
+              <span className="relative">{children}</span>
+            </>
+          ) : (
+            children
+          )}
+        </Link>
       );
     }
 
@@ -70,7 +102,25 @@ export const Button = forwardRef<ComponentRef<'button'> | ComponentRef<'a'>, But
         ref={ref as ForwardedRef<HTMLButtonElement>}
         className={classes}
         {...(props as ButtonAsButton)}
-      />
+        onClick={(e) => {
+          if (trackingProps) {
+            analytics.trackClick(trackingProps.element, trackingProps);
+          }
+          props.onClick?.(e);
+        }}
+      >
+        {isAnimated ? (
+          <>
+            <div
+              aria-hidden
+              className="bg-primary absolute inset-0 translate-y-full transition-transform duration-300 group-hover:translate-y-0"
+            />
+            <span className="relative">{children}</span>
+          </>
+        ) : (
+          children
+        )}
+      </button>
     );
   }
 );
