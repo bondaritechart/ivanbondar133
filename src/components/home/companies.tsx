@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { PageSection, SECTION_CONTAINER_STYLES } from '@/components/page-section';
-import { Typography } from '@/components/ui';
+import { Button, Typography } from '@/components/ui';
 import { Container } from '@/components/ui/Container';
+import { Routes } from '@/constants/routes';
 import { SectionLabel } from '../styling';
 import { CompanyCard } from './company-card';
 
@@ -19,22 +20,19 @@ const companies = [
     name: 'elemy',
     logo: '/images/8c88f966c88723e1fb4098ca5f9a50a2019e82ff.png',
     url: 'https://care.elemy.com/peds_b/',
-    description:
-      'Built healthcare platform interfaces, implemented real-time features, ensured HIPAA compliance',
+    description: 'Built healthcare platform interfaces, ensured HIPAA compliance',
   },
   {
     name: 'coverwallet',
     logo: '/images/2451566175a740f38ecee00e8b5679d1687ac669.png',
     url: 'https://www.coverwallet.com/',
-    description:
-      'Created insurance management dashboards, integrated payment systems, refined UX workflows',
+    description: 'Created insurance management dashboards, refined UX workflows',
   },
   {
     name: 'Keeps',
     logo: '/images/a3389506a9c698eb3b4873165166cc863799daa8.png',
     url: 'https://www.keeps.com/?srsltid=AfmBOoq44hUlcDidv_pg4tf3iAL6xrMjTu9Be_lYQZY59WAIwwDiD7Cj',
-    description:
-      'Crafted e-commerce experiences, optimized checkout flows, integrated subscription systems',
+    description: 'Crafted e-commerce experiences, optimized checkout flows',
   },
   {
     name: 'Popsa',
@@ -68,6 +66,11 @@ export const Companies = () => (
         {companies.map((company, index) => (
           <CompanyCard key={company.name} {...company} index={index} />
         ))}
+      </div>
+      <div className="text-center">
+        <Button href={Routes.CAREER} variant="outline">
+          Discover more
+        </Button>
       </div>
     </Container>
   </PageSection>

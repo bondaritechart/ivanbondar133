@@ -3,10 +3,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui';
 import { Routes } from '@/constants/routes';
-
 const links = [
   {
     label: 'Career',
@@ -40,12 +40,7 @@ export const Navigation = () => {
     >
       <div className="mx-auto max-w-7xl px-6 py-6">
         <div className="flex items-center justify-between">
-          <motion.a
-            href={Routes.HOME}
-            className="group relative"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          >
+          <Link href={Routes.HOME} className="group relative">
             <Image
               src="/images/08a4c2941dcc091823d73b529c66d66174d578f3.png"
               alt="Logo"
@@ -53,7 +48,7 @@ export const Navigation = () => {
               height={40}
               className="h-8 w-auto md:h-10"
             />
-          </motion.a>
+          </Link>
           <div className="hidden items-center md:flex">
             {links.map((link) => (
               <Button key={link.href} variant="text" size="sm" href={link.href}>
@@ -65,7 +60,9 @@ export const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <Button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => {
+              setIsMobileMenuOpen(!isMobileMenuOpen);
+            }}
             variant="ghost"
             className="md:hidden"
           >

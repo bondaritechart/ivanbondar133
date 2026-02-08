@@ -2,6 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import Link, { type LinkProps } from 'next/link';
 import { forwardRef } from 'react';
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ComponentRef, ForwardedRef } from 'react';
+import { analytics } from '@/utils/analytics-instance';
 import { cn } from '@/utils/tailwind';
 
 const buttonVariants = cva(
@@ -47,10 +48,14 @@ type ButtonAsLink = ButtonVariantProps &
     href: LinkProps['href'];
   };
 
-export type ButtonProps = ButtonAsButton | ButtonAsLink;
+export type ButtonProps = (ButtonAsButton | ButtonAsLink) & {
+  trackingProps?: Record<string, any> & {
+    element: string;
+  };
+};
 
 export const Button = forwardRef<ComponentRef<'button'> | ComponentRef<'a'>, ButtonProps>(
-  ({ variant, size, fullWidth, className, children, ...props }, ref) => {
+  ({ trackingProps, variant, size, fullWidth, className, children, ...props }, ref) => {
     const isAnimated = variant === 'animated';
     const classes = cn(
       buttonVariants({
@@ -70,6 +75,12 @@ export const Button = forwardRef<ComponentRef<'button'> | ComponentRef<'a'>, But
           href={href}
           className={classes}
           {...linkProps}
+          onClick={(e) => {
+            if (trackingProps) {
+              analytics.trackClick(trackingProps.element, trackingProps);
+            }
+            props.onClick?.(e);
+          }}
         >
           {isAnimated ? (
             <>
@@ -91,6 +102,12 @@ export const Button = forwardRef<ComponentRef<'button'> | ComponentRef<'a'>, But
         ref={ref as ForwardedRef<HTMLButtonElement>}
         className={classes}
         {...(props as ButtonAsButton)}
+        onClick={(e) => {
+          if (trackingProps) {
+            analytics.trackClick(trackingProps.element, trackingProps);
+          }
+          props.onClick?.(e);
+        }}
       >
         {isAnimated ? (
           <>

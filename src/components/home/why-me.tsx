@@ -61,7 +61,7 @@ export const WhyMe = () => {
               <ValuePropCard className="flex flex-col gap-4">
                 <reason.icon className="text-primary" size={38} />
                 <Typography variant="h5">{reason.title}</Typography>
-                <Typography variant="label">{reason.description}</Typography>
+                <Typography>{reason.description}</Typography>
               </ValuePropCard>
             </motion.div>
           ))}

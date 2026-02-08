@@ -43,7 +43,7 @@ export const Hero = () => (
           className="lg:mo-10 mx-auto mt-6 max-w-3xl"
         >
           <Typography variant="description">
-            Full-stack developer with 7+ years of experience, building high-load web apps for
+            Full-stack developer with 9+ years of experience, building high-load web apps for
             fintech, healthcare and e-commerce.
           </Typography>
         </motion.div>

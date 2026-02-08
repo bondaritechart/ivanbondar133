@@ -1,11 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Blocks, Zap, Layers, ShieldCheck, Rocket, Users } from 'lucide-react';
 import { PageSection, SECTION_CONTAINER_STYLES } from '@/components/page-section';
 import { Container } from '@/components/ui/Container';
 import { Pill } from '@/components/ui/Pill';
 import { ValuePropCard } from '@/components/ui/value-prop-card';
+import { Routes } from '@/constants/routes';
 import { CornerAccent, SectionLabel, SharpAccent } from '../styling';
 import { Button, Typography } from '../ui';
 
@@ -88,38 +89,42 @@ export const Skills = () => (
       </motion.div>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={skill.id}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.15 }}
-            viewport={{ once: true }}
-            className="group relative"
-          >
-            <ValuePropCard className="md:min-h-50">
-              <CornerAccent position="top-left" size="md" />
-              <CornerAccent position="bottom-right" size="md" color="accent" />
-              <div className="relative flex h-full flex-col gap-4">
-                <skill.icon className="text-primary" size={38} />
-                <Typography variant="h5">{skill.title}</Typography>
-                <Typography variant="label">{skill.description}</Typography>
-                <div className="mt-auto flex flex-wrap gap-2">
-                  {skill.tools.map((tool) => (
-                    <Pill label={tool} key={tool} />
-                  ))}
+        <AnimatePresence>
+          {skills.map((skill, index) => (
+            <motion.div
+              key={skill.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.15 }}
+              viewport={{ once: true }}
+              className="group relative"
+            >
+              <ValuePropCard className="md:min-h-50">
+                <CornerAccent position="top-left" size="md" />
+                <CornerAccent position="bottom-right" size="md" color="accent" />
+                <div className="relative flex h-full flex-col gap-4">
+                  <skill.icon className="text-primary" size={38} />
+                  <Typography variant="h5">{skill.title}</Typography>
+                  <Typography variant="label">{skill.description}</Typography>
+                  <div className="mt-auto flex flex-wrap gap-2">
+                    {skill.tools.map((tool) => (
+                      <Pill label={tool} key={tool} />
+                    ))}
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Typography variant="caption">Result</Typography>
+                    <Typography variant="label">{skill.result}</Typography>
+                  </div>
                 </div>
-                <div className="flex flex-col gap-2">
-                  <Typography variant="caption">Result</Typography>
-                  <Typography variant="label">{skill.result}</Typography>
-                </div>
-              </div>
-            </ValuePropCard>
-          </motion.div>
-        ))}
+              </ValuePropCard>
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
       <div className="text-center">
-        <Button variant="outline">Discover more</Button>
+        <Button href={Routes.PROJECTS} variant="outline">
+          See real projects
+        </Button>
       </div>
     </Container>
   </PageSection>

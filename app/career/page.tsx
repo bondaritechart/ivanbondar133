@@ -1,8 +1,9 @@
 'use client';
 
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion';
 import { CalendarIcon, Cone } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { Contact } from '@/components/contact';
 import { PageSection } from '@/components/page-section';
 import { SectionLabel, SharpAccent } from '@/components/styling';
 import { Divider, Typography } from '@/components/ui';
@@ -102,93 +103,99 @@ export default function Page() {
   }, [lineHeight]);
 
   return (
-    <main className="relative py-10">
-      <PageSection className="border-0">
-        <Container className="relative z-10 space-y-6 lg:space-y-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-4"
-          >
-            <SectionLabel>Professional Journey</SectionLabel>
-            <Typography variant="h1" as="h1">
-              Career <br /> <span className="text-primary">Timeline</span>
-            </Typography>
-            <Typography variant="description" className="max-w-2xl">
-              9+ years of frontend engineering experience across healthcare, fintech, and tech
-              industries.
-            </Typography>
-          </motion.div>
-
-          <div ref={cardsRef} className="cards relative space-y-4 md:space-y-6 lg:space-y-8">
-            <div className="bg-primary/20 absolute top-0 left-3 h-full w-0.5 origin-top lg:left-[74px]" />
-            <motion.div
-              className="bg-accent absolute top-0 left-3 w-0.5 origin-top lg:left-[74px]"
-              style={{ height: lineHeightSpring }}
-            />
-            {items.map((item, index) => (
+    <div>
+      <main className="relative py-10">
+        <PageSection className="border-0">
+          <Container className="relative z-10 space-y-6 lg:space-y-12">
+            <AnimatePresence>
               <motion.div
-                ref={(node) => {
-                  itemRefs.current[index] = node;
-                }}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                key={item.company}
-                className="relative pl-10 lg:pl-50"
+                className="space-y-4"
               >
-                <Pill
-                  className="absolute top-0 left-0 z-2 hidden w-[150px] lg:flex"
-                  variant="square"
-                  size="lg"
-                  appearance={index <= activeIndex ? 'active' : 'default'}
-                  icon={<CalendarIcon size={16} />}
-                  label={item.period}
-                />
-                <div
-                  className={cn(
-                    'border-primary absolute top-0 left-[3px] h-5 w-5 rotate-45 transform border-2 transition-colors duration-300 lg:hidden',
-                    index <= activeIndex ? 'bg-primary' : ''
-                  )}
-                />
-                <ValuePropCard className="relative">
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <Typography as="h4" variant="h4">
-                        {item.title}
-                      </Typography>
-                      <Pill
-                        icon={<CalendarIcon size={16} />}
-                        variant="square"
-                        size="lg"
-                        label={item.period}
-                        className="text-nowrap lg:hidden"
-                      />
-                    </div>
-                    <Typography variant="description">{item.company}</Typography>
-                  </div>
-                  <Divider />
-                  <ul className="space-y-2">
-                    {item.responsibilities.map((responsibility, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <Cone
-                          size={12}
-                          className="text-primary mt-2 shrink-0 rotate-90 transform"
-                        />
-                        <Typography>{responsibility}</Typography>
-                      </li>
-                    ))}
-                  </ul>
-                </ValuePropCard>
+                <SectionLabel>Professional Journey</SectionLabel>
+                <Typography variant="h1" as="h1">
+                  Career <br /> <span className="text-primary">Timeline</span>
+                </Typography>
+                <Typography variant="description" className="max-w-2xl">
+                  9+ years of frontend engineering experience across healthcare, fintech, and tech
+                  industries.
+                </Typography>
               </motion.div>
-            ))}
-          </div>
-        </Container>
-      </PageSection>
-      <SharpAccent position="bottom-left" color="fuchsia" />
-    </main>
+            </AnimatePresence>
+            <div ref={cardsRef} className="cards relative space-y-4 md:space-y-6 lg:space-y-8">
+              <div className="bg-primary/20 absolute top-0 left-3 h-full w-0.5 origin-top lg:left-[74px]" />
+              <motion.div
+                className="bg-accent absolute top-0 left-3 w-0.5 origin-top lg:left-[74px]"
+                style={{ height: lineHeightSpring }}
+              />
+              <AnimatePresence>
+                {items.map((item, index) => (
+                  <motion.div
+                    ref={(node) => {
+                      itemRefs.current[index] = node;
+                    }}
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    key={item.company}
+                    className="relative pl-10 lg:pl-50"
+                  >
+                    <Pill
+                      className="absolute top-0 left-0 z-2 hidden w-[150px] lg:flex"
+                      variant="square"
+                      size="lg"
+                      appearance={index <= activeIndex ? 'active' : 'default'}
+                      icon={<CalendarIcon size={16} />}
+                      label={item.period}
+                    />
+                    <div
+                      className={cn(
+                        'border-primary absolute top-0 left-[3px] h-5 w-5 rotate-45 transform border-2 transition-colors duration-300 lg:hidden',
+                        index <= activeIndex ? 'bg-primary' : ''
+                      )}
+                    />
+                    <ValuePropCard className="relative">
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <Typography as="h4" variant="h4">
+                            {item.title}
+                          </Typography>
+                          <Pill
+                            icon={<CalendarIcon size={16} />}
+                            variant="square"
+                            size="lg"
+                            label={item.period}
+                            className="text-nowrap lg:hidden"
+                          />
+                        </div>
+                        <Typography variant="description">{item.company}</Typography>
+                      </div>
+                      <Divider />
+                      <ul className="space-y-2">
+                        {item.responsibilities.map((responsibility, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <Cone
+                              size={12}
+                              className="text-primary mt-2 shrink-0 rotate-90 transform"
+                            />
+                            <Typography>{responsibility}</Typography>
+                          </li>
+                        ))}
+                      </ul>
+                    </ValuePropCard>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+          </Container>
+        </PageSection>
+        <SharpAccent position="bottom-left" color="fuchsia" />
+      </main>
+      <Contact />
+    </div>
   );
 }
