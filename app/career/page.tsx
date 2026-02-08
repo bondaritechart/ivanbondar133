@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { CalendarIcon, Cone } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PageSection } from '@/components/page-section';
 import { SectionLabel } from '@/components/styling';
 import { Divider, Typography } from '@/components/ui';
@@ -54,8 +54,10 @@ const items = [
 
 export default function Page() {
   const cardsRef = useRef<HTMLDivElement | null>(null);
+  const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
   const lineHeight = useMotionValue(0);
   const lineHeightSpring = useSpring(lineHeight, { stiffness: 300, damping: 40 });
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   useEffect(() => {
     const el = cardsRef.current;
@@ -70,6 +72,16 @@ export default function Page() {
       // Height from container top to viewport middle, clamped to container height.
       const nextHeight = Math.max(0, Math.min(viewportMidY - rect.top, rect.height));
       lineHeight.set(nextHeight);
+
+      // Last item whose top is above the viewport midpoint becomes "active".
+      let nextActiveIndex = -1;
+      for (let i = 0; i < itemRefs.current.length; i++) {
+        const node = itemRefs.current[i];
+        if (!node) continue;
+        const itemRect = node.getBoundingClientRect();
+        if (itemRect.top <= viewportMidY) nextActiveIndex = i;
+      }
+      setActiveIndex((prev) => (prev === nextActiveIndex ? prev : nextActiveIndex));
     };
 
     const onScrollOrResize = () => {
@@ -117,6 +129,9 @@ export default function Page() {
             />
             {items.map((item, index) => (
               <motion.div
+                ref={(node) => {
+                  itemRefs.current[index] = node;
+                }}
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -128,6 +143,7 @@ export default function Page() {
                   className="absolute top-0 left-0 z-2 w-[150px]"
                   variant="square"
                   size="lg"
+                  appearance={index <= activeIndex ? 'active' : 'default'}
                   icon={<CalendarIcon size={16} />}
                   label={item.period}
                 />
